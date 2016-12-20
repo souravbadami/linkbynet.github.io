@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Passerelle IPv6 vers IPv4</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/beige.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown data-background="bg.jpg">
+# Création d'une passerelle HTTP/SSL IPv6 vers IPv4
+
+Utilisation de Traefik et Let's Encrypt
+				</section>
+				<section data-markdown data-background="bg.jpg">
+					<script type="text/template">
+# But
+
+* Épuisement de l'espace d'adressage IPv4 annoncé depuis longtemps
+* Les clients IPv6-only arrivent (smartphones, ...)
+* Les architectures existantes sont souvent IPv4-only
+* Il faut trouver un moyen de les faire communiquer pour pouvoir migrer en douceur
+* Apple commence à rendre obligatoire le support d'IPv6 dans les apps
+
+<div data-markdown class=fragment>
+*Nous allons donc implémenter une passerelle IPv6 vers IPv4.*
+</div>
+
+<div class=fragment>
+*Pré-requis* : Disposer d'un serveur Linux dual-stack IPv4/IPv6.
+</div>
+					</script>
+				</section>
+				<section data-markdown data-background="bg.jpg">
+					<script type="text/template">
+# Bonus
+
+Nous allons utiliser le reverse proxy [Traefik](https://traefik.io/). Celui-ci supporte nativement le protocole ACME qui permet la gestion des certificats SSL fournis par [Let's Encrypt](https://letsencrypt.org/).
+
+<div class="fragment">
+Nous serons donc en mesure de fournir au passage une passerelle HTTPs vers HTTP, de façon transparente et automatisée.
+</div>
+					</script>
+				</section>
+				<section data-markdown data-background="bg.jpg">
+					<script type="text/template">
+# Briques techniques
+
+* un serveur Linux avec une dual stack IPv4/IPv6
+* sur lequel fonctionne le reverse proxy Traefik (hosté dans un conteneur Docker)
+* let's encrypt sera appelé par Traefik pour la gestion du certificat SSL
+
+<p class="stretch">![Schéma de principe](Schema.png)
+					</script>
+				</section>
+				<section data-markdown data-background="bg.jpg">
+# Installation
+
+[![Clickez pour voir la vidéo](https://img.youtube.com/vi/23jUCaSJoXU/0.jpg)](https://www.youtube.com/watch?v=23jUCaSJoXU)
+
+Suivez le guide !
+
+(Cf slide suivant pour les snippets)
+				</section>
+				<section data-markdown data-background="bg.jpg">
+# Snippets
+
+* [Configuration du repository Yum](https://github.com/linkbynet/linkbynet.github.io/blob/master/Gateway-IPv6-IPv4/snippets/docker.repo)
+* [Configuration de Traefik](https://github.com/linkbynet/linkbynet.github.io/blob/master/Gateway-IPv6-IPv4/snippets/traefik.toml)
+* [Commandes utiles](https://github.com/linkbynet/linkbynet.github.io/blob/master/Gateway-IPv6-IPv4/snippets/cmd.sh)
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+[entryPoints]
+        [entryPoints.http]
+                address = ":80"
+        [entryPoints.https]
+                address = ":443"
+                [entryPoints.https.tls]
+
+[file]
+
+[backends]
+        [backends.backend1]
+                [backends.backend1.servers.server1]
+                url = "http://www.google.com"
+
+[frontends]
+        [frontends.frontend1]
+        backend = "backend1"
+        entrypoints = ["http", "https"]
+                [frontends.frontend1.routes.google]
+                rule = "Host:test.your-own-domain.fr"
+        [frontends.frontend2]
+        backend = "backend1"
+        entrypoints = ["http", "https"]
+                [frontends.frontend2.routes.google]
+                rule = "Host:test6.your-own-domain.fr"
+
+[acme]
+email = "your-email@your-own-domain.fr"
+storage = "acme.json"
+entryPoint = "https"
+onDemand = true
