@@ -1,0 +1,309 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/beige.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown data-background="bg.jpg" >
+				## Containerisation dans le cloud
+				<p class="stretch">![LBNLogo](images/lbn.jpg)
+
+				</section>
+				<section data-markdown data-background="bg.jpg">
+				Avant toutes choses, LinkByNet et moi-même tenions à vous souhaitez une bonne et heureuse année 2017.
+
+				<p class="stretch">![Bonne Année](images/newyear.jpg)
+
+				Commençons cette nouvelle année par un petit article mettant en pratique une infrastructure Docker sur le Cloud.
+			  </section>
+
+				<section data-markdown data-background="bg.jpg">
+					<script type="text/template">
+				   ## Une mouvance
+				   Il y a un presque un an, nous vous présentions le système de conteneur Docker à travers un article complet sorti sur [notre blog au canada](http://blog.linkbynet.ca/articles/cloud-computing/innovez-en-2016-avec-les-conteneurs/)
+						<div data-markdown class=fragment>
+						   Avec plus de [**1500 contributeurs GitHub**](https://github.com/docker/docker), ce projet marque aujourd’hui sa position de leader dans un environnement de développeurs mais aussi de plus en plus dans un contexte de production applicative d’une architecture en microservices. Sa portabilité, son universalité et sa volatilité lui permettant aujourd’hui d’être une brique technique incontournable dans <b>une démarche agile</b>.
+						</div>
+					</script>
+				</section>
+				<section data-markdown data-background="bg.jpg">
+					<script type="text/template">
+						## Infogérance- sécurité
+
+						Pour faire suite à la présentation dans les grandes lignes de docker, il fallait soulever les quelques « malentendus » ou « idées reçues » autour du monde des containers afin d’éviter toute problématique technique ou de sécurité. Si vous avez loupé ça, voici [le lien de l’article](http://thewatchmakers.fr/expert-les-apports-de-docker-agilite-productivite-et-innovation/).
+					</script>
+				</section>
+				<section data-markdown data-background="bg.jpg">
+					<script type="text/template">
+					La théorie c’est bien, mais vous souhaitez mettre un peu les mains dans le cambouis ?
+					<p class="stretch">![cambouis](images/cambouis.jpg)
+						<div data-markdown class=fragment>
+							Pas de problème, de nombreux tutoriels existent sur internet et sont facilement abordable si vous avez les bases d’administration sous Linux ou MAC.
+						</div>
+						<div data-markdown class=fragment>
+							*Voici un exemple : https://docs.docker.com/engine/installation/ *
+						</div>
+					</script>
+				</section>
+				<section data-markdown data-background="bg.jpg">
+				Monter une infrastructure **résiliente, *auto-scallable* et facilement exploitable** est une autre paire de manche que je ne vais pas aborder pour des raisons de temps et de maux de tête.
+
+				<p class="stretch">![Maux de tête](images/headache.jpg)
+				</section>
+				<section data-markdown data-background="bg.jpg">
+				## LA Solution Cloud
+
+				Aujourd’hui, le **CaaS (Containers As A Service)** est LA solution déportée. Elle commence à se démocratiser et devient abordable. Les principaux colosses du cloud publique y ont vu une niche en devenir et ont lancé une offre de service autour de la containerisation :
+						<div data-markdown class=fragment>
+				- Cloud Azure : [Azure Container Service](https://azure.microsoft.com/en-us/services/container-service/) (ACS)
+				- Cloud AWS : [EC2 Container Service](https://aws.amazon.com/documentation/ecs/?nc1=h_ls) (ECS)
+				- Cloud Google : [Google Container Engine](https://cloud.google.com/container-engine/) (GCE)
+						</div>
+				</section>
+				<section data-markdown data-background="bg.jpg">
+				En quelques instants et en quelques clics, vous êtes au main d’une plateforme clustérisée de containers dockers.
+
+				En fonction de votre cluster et des agents (Virtual Machines) que vous allez choisir, la facture sera plus où moins salée.
+		 		<p class="stretch">![coût infrastructure](images/cost.jpg)
+
+				Tout dépend de votre besoin, si vous êtes sur une infrastructure de production à haute disponibilité ou d’un environnement de test pour des développeurs.
+				</section>
+				<section data-markdown data-background="bg.jpg">
+				## Etes-vous prêt à relever ce petit défi ?
+				### Cas pratique sur sur le Cloud Azure..
+				<p class="stretch">![Docker and Azure](images/dockerazure.jpg)
+				</section>
+				<section data-markdown data-background="bg.jpg">
+				### Le contexte Microsoft
+
+				**Microsoft** s’est ouvert depuis quelques années au monde de l’Open-Source, contrairement à l’ère BALLMER qui l’en avait éloigné, en travaillant en étroite collaboration avec Cannonical sur divers projets :
+				-	[Le portage de Bash sous Windows](https://techcrunch.com/2016/03/30/be-very-afraid-hell-has-frozen-over-bash-is-coming-to-windows-10/)
+				-	[Le portage de SQL Server sous Linux](https://blogs.microsoft.com/blog/2016/03/07/announcing-sql-server-on-linux/#sm.00019pjj6d7treg8rg92ro5qf35lf)
+				-	[L’ouverture de codes source ( .NET, PowerShell,..)](https://www.asp.net/open-source)
+				-	[LXD Container Supervisor](http://www.zdnet.com/article/ubuntu-is-working-on-a-new-secure-container-hypervisor-lxd/)
+				- [The DC/OS Project](https://azure.microsoft.com/en-us/blog/microsoft-joins-the-new-dc-os-open-source-project/)
+				</section>
+				<section data-markdown data-background="bg.jpg">
+					<p class="stretch">![Microsoft and OpenSource](images/mo.jpg)
+
+					Ce rapprochement avec [Cannonical](https://www.canonical.com/) et la communauté Open-Source n’est sans un intérêt certain vis-à-vis de la présence de linux dans une environnement Cloud.
+
+					Lorsqu’on parle actuellement container, la solution qui revient le plus est : [**Docker**](https://www.docker.com/what-docker).
+
+					Aujourd’hui, Microsoft ne supporte pas Docker mais cela ne serait tarder car une version en *Preview* est en cours.
+				</section>
+				<section data-markdown data-background="bg.jpg">
+					### Comment font ils donc pour fournir un service de containerisation me direz-vous ?
+
+					Encore une fois, ce rapprochement ave Cannonical leur a été bénéfique car l’ensemble de la plateforme **ACS** repose sur des serveurs sous Ubuntu 16.04 LTS couplés à différents outils open-source.
+
+				</section>
+				<section data-markdown data-background="bg.jpg">
+					### Let's go ! Construisons notre environnement Azure Conainer Service de demo
+
+					Je vous propose en quelques instant de mettre en œuvre une infrastructure basique sur le cloud
+
+					Pour commencer, voici le [lien](https://azure.microsoft.com/en-us/free/?b=16.51b) pour créer un compte Azure vous permettant le droit d’avoir **200$** de crédit pour vous permettre de tester l’un des services que Microsoft propose sur son cloud.
+				</section>
+				<section data-markdown data-background="bg.jpg">
+					## Création du compte Azure & création de l'infrastructure
+
+					1. Authentifiez vous sur [le portail Azure](https://portal.azure.com/)
+					2. Récupérer [ici](files/basic_acs_template.json) le contenu au format json du template ACS de l'infrastructure de démo.
+					3. Dans la section **Templates** du portail Azure, créér un template "*demo-acs*" en utilisant le code json récupéré.
+					4. Déployer l'infrastructure à partir du template en répondant à quelques questions (Nom du RessourceGroup, mot de passe à définir ).
+					5. Patienter quelques minutes et voilà votre environnement ACS disponible
+				</section>
+				<section data-markdown data-background="bg.jpg">
+				## Petit aparté
+
+				Pour notre démo, j’ai opté pour [DC/OS](https://dcos.io/), solution d'entreprise permettant l'eslasticité d'une plateforme d'application conteneurisées. A ce jour, il s'agit de la solution la mieux intégrée et supportée par Microsoft.
+
+				Pour ma part, j’apprécie assez la documentation chez [Mesosphere](https://mesosphere.com/) et leur participation sur Github autour de [marathon](https://mesosphere.github.io/marathon/) et d’[universe](http://mesosphere.github.io/universe/)
+				</section>
+				<section data-markdown data-background="bg.jpg">
+				## Une infrastructure complète et scalable
+
+				<p class="stretch">![DCOS Infrastructure](images/dcos_infra.jpg)
+				</section>
+				<section data-markdown data-background="bg.jpg">
+				Notre cluster possède un ou plusieurs master DCOS permettant la disponibilité des agents DC/OS (public & private).
+
+				Nous conseillons de passer à **3 nodes masters** minima dès que vous souhaitez utiliser cette infrastructure pour un environnement de production.
+
+				<p class="stretch">![Warning](images/warning.jpg)
+				</section>
+				<section  data-markdown data-background="bg.jpg">
+				Ces différents groupes de serveurs font partie de « ScaleSet », entité permettant l’auto-scalling des nodes agents en fonction de la charge CPU/RAM de ces derniers.
+
+				Deux groupes d’agents sont déployés, l’un accessible depuis internet à travers un loadbalancer Azure du fait que le subnet soit routé mais le second ne l’est pas.
+			  </section>
+				<section  data-markdown data-background="bg.jpg">
+				### Création du tunnel SSH pour se connecter à l'infrastructure
+
+				1. Se connecter sur un master DC/OS
+
+				 Il faut identifier l'IP publique de votre **dcos-master**. Pour celà, aller dans le RessourceGroup crée et identifier l'objet **Public IP Address**
+
+				2. Utiliser un client SSH et créer un tunnel ssh
+				  <pre><code class="bash">
+						ssh –L8882:localhost:80 –i ~/.ssh/yourprivatesshkey demo_adm@PUBLIC-IP
+          </code></pre>
+					<pre><code class="bash">
+						demo_adm@dcos-master-2626893B-0:~$
+					</code></pre>
+				</section>
+				<section data-markdown data-background="bg.jpg">
+				### Accès aux interfaces de la plateforme (1/2)
+
+				DC/OS URL:http://localhost:8882
+
+				 <p class="stretch">![DCOS Interface](images/dcos_interface.jpg)</p>
+
+		  	</section>
+				<section data-markdown data-background="bg.jpg">
+					Cette interface possède un dashbord assez complet permettant d’avoir un aperçu assez complet de l’état de santé de la plateforme.
+
+					<p class="stretch">![Docker+DCOS+AZURE](images/dcosdockerazure.jpg)</p>
+
+				</section>
+				<section data-markdown data-background="bg.jpg">
+				### Accès aux interfaces de la plateforme (2/2)
+
+				Marathon URL:http://localhost:8882/marathon/
+
+				 <p class="stretch">![Marathon Interface](images/marathon_interface.jpg)</p>
+				</section>
+				<section data-markdown data-background="bg.jpg">
+					Marathon permet le déploiement de container que l’on appellera une application.
+
+					Outre d’avoir une interface standard d’administration, marathon possède [une API de type REST](https://mesosphere.github.io/marathon/docs/rest-api.html) fort sympathique qui vous permettra d’automatiser vos déploiements.
+
+					<p class="stretch">![DMS Logo](images/docker_marathon_mesos.jpg)</p>
+				</section>
+				<section data-markdown data-background="bg.jpg">
+					### Différentes couches applicatives impactées dans un déploiement docker
+
+
+					<p class="stretch">![Docker Image Deployment](images/docker_workflow_deployment.jpg)</p>
+				</section>
+
+				<section data-markdown data-background="bg.jpg">
+					### Scalabilité avec marathon-lb
+
+					Permettre le scalling au niveau « container » de façon transparente d’un type d’application nécessite la mise en place **d’un container marathon-lb** portant le service HAProxy.
+
+					Pour chaque application, lors du déploiement du container applicatif, le service va s’auto-enregistrer auprès du marathon-lb.
+				</section>
+				<section data-markdown data-background="bg.jpg">
+				  ### Déploiement d'un container marathon-lb (1/2)
+
+			    Depuis l’interface DC/OS, aller dans **Universe** (menu de gauche) puis sélectionner le packages marathon-lb puis installer :
+					<p class="stretch">![Marathon LB Deployment](images/marathonlb_deployment.jpg)</p>
+			  </section>
+				<section data-markdown data-background="bg.jpg">
+					### Déploiement d'un container marathon-lb (2/2)
+
+					Une fois déployé, le container est présent et actif.
+
+
+					<p class="stretch">![Marathon LB Health](images/marathonlb_state.jpg)</p>
+				</section>
+				<section data-markdown data-background="bg.jpg">
+					### Déploiement d'une application "hello-world"(1/3)
+
+					Depuis Marathon, l’orchestrateur de container fournis par DC/OS, nous allons à partir d’un fichier description en json déployer notre image docker sur un agent DCOS.
+
+					Voici [un exemple de fichier json](files/hello.json) pour faire celà.
+
+				</section>
+				<section data-markdown data-background="bg.jpg">
+					### Déploiement d'une application "hello-world"(2/3)
+
+					Pour cela, il faut cliquer sur * **Create Application** * et passer en mode json. Il vous suffit ensuite de copier/coller le contenu de notre fichier json et de valider:
+
+					<p class="stretch">![Marathon json import](images/marathon_json_import.jpg)</p>
+				</section>
+				<section data-markdown data-background="bg.jpg">
+					### Déploiement d'une application "hello-world"(3/3)
+
+					<p class="stretch">![Result containers deployment](images/containers_deployement.jpg)</p>
+
+					Voilà nos deux containers déployés qui seront accessible depuis internet à travers le marathon-lb.
+
+					Il ne reste plus qu’à ouvrir les flux web et d’autoriser le flux http vers le port **10000/tcp** du marathon-lb sur le loadbalancer des public agents DCOS.
+				</section>
+				<section data-markdown data-background="bg.jpg">
+					###Résultat"(1/2) - 1er essai
+
+					Je saisi l’url de mon vhost dans mon navigateur et voilà le résultat:
+
+					<p class="stretch">![premier essai](images/resultat1.jpg)</p>
+				</section>
+				<section data-markdown data-background="bg.jpg">
+					###Résultat"(2/2) - 2eme essai
+
+					<p class="stretch">![deuxieme essai](images/resultat2.jpg)</p>
+
+					Le résultat escompté est bien au rendez-vous car depuis notre url de demo, nous arrivons bien sur les deux containers en http.
+				</section>
+				<section data-markdown data-background="bg.jpg">
+					### Mon feedback ! Les points positifs
+
+					- Résultat probant car **en quelques minutes** nous avons une plateforme en **haute disponibilité** sur le Cloud Azure
+					- SLA en corrélation avec un monde de production.
+					- Nous avons le choix entre différents framework ( DC/OS, Swarm, Kubernetes..). Celà laisse le choix au plus réfractaires de migrer dans le Cloud en gardant leurs petites habitudes.
+					- Des **services Azure disponible et complémentaire** à l'ACS sont disponibles: *Application Gateway, Azure container Registry...*
+				</section>
+				<section data-markdown data-background="bg.jpg">
+					### Mon feedback ! Les points négatifs
+
+					Pour moi, aujourd'hui l'offre ACS s'apparente à une offre packagée de type **IaaS** et non à une vrai offre **CaaS**. Les VMs sont accessibles en SSH, les modifications systèmes sont possibles mais déconseillées.Cette certte offre doit faire encore ces preuves et est en pleine évolution mais je m'attendais à quelque chose de plus contruit..
+				</section>
+				<section data-markdown data-background="bg.jpg">
+					### Et vous, qu'en pensez vous ?
+
+					Le meilleur moyen de vous faire votre idée est de suivre ce petit tutoriel.
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+						</div>
+</html>

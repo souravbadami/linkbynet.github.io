@@ -1,0 +1,1045 @@
+  {
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+          "virtualMachines_dcos_master_FC56B3E8_0_adminPassword": {
+              "defaultValue": null,
+              "type": "SecureString"
+          },
+          "virtualMachineScaleSets_dcos_agent_private_FC56B3E8_vmss0_adminPassword": {
+              "defaultValue": null,
+              "type": "SecureString"
+          },
+          "virtualMachineScaleSets_dcos_agent_public_FC56B3E8_vmss0_adminPassword": {
+              "defaultValue": null,
+              "type": "SecureString"
+          },
+          "extensions_linuxdiagnostic_protectedSettings": {
+              "defaultValue": null,
+              "type": "SecureObject"
+          },
+          "extensions_waitforleader_protectedSettings": {
+              "defaultValue": null,
+              "type": "SecureObject"
+          },
+          "availabilitySets_dcos_master_availabilitySet_FC56B3E8_name": {
+              "defaultValue": "dcos-master-availabilitySet-FC56B3E8",
+              "type": "String"
+          },
+          "virtualMachines_dcos_master_FC56B3E8_0_name": {
+              "defaultValue": "dcos-master-FC56B3E8-0",
+              "type": "String"
+          },
+          "virtualMachineScaleSets_dcos_agent_private_FC56B3E8_vmss0_name": {
+              "defaultValue": "dcos-agent-private-FC56B3E8-vmss0",
+              "type": "String"
+          },
+          "virtualMachineScaleSets_dcos_agent_public_FC56B3E8_vmss0_name": {
+              "defaultValue": "dcos-agent-public-FC56B3E8-vmss0",
+              "type": "String"
+          },
+          "containerServices_containerservice_demo_lbn_name": {
+              "defaultValue": "containerservice-{resourceGroupName}",
+              "type": "String"
+          },
+          "loadBalancers_dcos_agent_lb_FC56B3E8_name": {
+              "defaultValue": "dcos-agent-lb-FC56B3E8",
+              "type": "String"
+          },
+          "loadBalancers_dcos_master_lb_FC56B3E8_name": {
+              "defaultValue": "dcos-master-lb-FC56B3E8",
+              "type": "String"
+          },
+          "networkInterfaces_dcos_master_FC56B3E8_nic_0_name": {
+              "defaultValue": "dcos-master-FC56B3E8-nic-0",
+              "type": "String"
+          },
+          "networkSecurityGroups_dcos_agent_private_nsg_FC56B3E8_name": {
+              "defaultValue": "dcos-agent-private-nsg-FC56B3E8",
+              "type": "String"
+          },
+          "networkSecurityGroups_dcos_agent_public_nsg_FC56B3E8_name": {
+              "defaultValue": "dcos-agent-public-nsg-FC56B3E8",
+              "type": "String"
+          },
+          "networkSecurityGroups_dcos_master_nsg_FC56B3E8_name": {
+              "defaultValue": "dcos-master-nsg-FC56B3E8",
+              "type": "String"
+          },
+          "publicIPAddresses_dcos_agent_ip_lbnlabagents_FC56B3E8_name": {
+              "defaultValue": "dcos-agent-ip-lbnlabagents-FC56B3E8",
+              "type": "String"
+          },
+          "publicIPAddresses_dcos_master_ip_lbnlabmgmt_FC56B3E8_name": {
+              "defaultValue": "dcos-master-ip-lbnlabmgmt-FC56B3E8",
+              "type": "String"
+          },
+          "virtualNetworks_dcos_vnet_FC56B3E8_name": {
+              "defaultValue": "dcos-vnet-FC56B3E8",
+              "type": "String"
+          },
+          "storageAccounts_00wdbiioyq5qxv4agntpri0_name": {
+              "defaultValue": "00wdbiioyq5qxv4agntpri0",
+              "type": "String"
+          },
+          "storageAccounts_60wdbiioyq5qxv4agntpri1_name": {
+              "defaultValue": "60wdbiioyq5qxv4agntpri1",
+              "type": "String"
+          },
+          "storageAccounts_c0wdbiioyq5qxv4agntpri2_name": {
+              "defaultValue": "c0wdbiioyq5qxv4agntpri2",
+              "type": "String"
+          },
+          "storageAccounts_i0wdbiioyq5qxv4agntpri3_name": {
+              "defaultValue": "i0wdbiioyq5qxv4agntpri3",
+              "type": "String"
+          },
+          "storageAccounts_o0wdbiioyq5qxv4agntpri4_name": {
+              "defaultValue": "o0wdbiioyq5qxv4agntpri4",
+              "type": "String"
+          },
+          "storageAccounts_wdbiioyq5qxv4agntpub_name": {
+              "defaultValue": "wdbiioyq5qxv4agntpub",
+              "type": "String"
+          },
+          "storageAccounts_wdbiioyq5qxv4diag0_name": {
+              "defaultValue": "wdbiioyq5qxv4diag0",
+              "type": "String"
+          },
+          "storageAccounts_wdbiioyq5qxv4mstr0_name": {
+              "defaultValue": "wdbiioyq5qxv4mstr0",
+              "type": "String"
+          },
+          "extensions_linuxdiagnostic_name": {
+              "defaultValue": "dcos-master-FC56B3E8-0/linuxdiagnostic",
+              "type": "String"
+          },
+          "extensions_waitforleader_name": {
+              "defaultValue": "dcos-master-FC56B3E8-0/waitforleader",
+              "type": "String"
+          },
+          "loadBalancers_dcos_agent_lb_FC56B3E8_id": {
+              "defaultValue": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/dcos-agent-lb-FC56B3E8/frontendIPConfigurations/dcos-agent-lbFrontEnd-FC56B3E8",
+              "type": "String"
+          },
+          "loadBalancers_dcos_agent_lb_FC56B3E8_id_1": {
+              "defaultValue": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/dcos-agent-lb-FC56B3E8/backendAddressPools/dcos-agent-pool-FC56B3E8",
+              "type": "String"
+          },
+          "loadBalancers_dcos_agent_lb_FC56B3E8_id_2": {
+              "defaultValue": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/dcos-agent-lb-FC56B3E8/probes/tcpHTTPProbe",
+              "type": "String"
+          },
+          "loadBalancers_dcos_agent_lb_FC56B3E8_id_3": {
+              "defaultValue": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/dcos-agent-lb-FC56B3E8/frontendIPConfigurations/dcos-agent-lbFrontEnd-FC56B3E8",
+              "type": "String"
+          },
+          "loadBalancers_dcos_agent_lb_FC56B3E8_id_4": {
+              "defaultValue": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/dcos-agent-lb-FC56B3E8/backendAddressPools/dcos-agent-pool-FC56B3E8",
+              "type": "String"
+          },
+          "loadBalancers_dcos_agent_lb_FC56B3E8_id_5": {
+              "defaultValue": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/dcos-agent-lb-FC56B3E8/probes/tcpHTTPSProbe",
+              "type": "String"
+          },
+          "loadBalancers_dcos_agent_lb_FC56B3E8_id_6": {
+              "defaultValue": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/dcos-agent-lb-FC56B3E8/frontendIPConfigurations/dcos-agent-lbFrontEnd-FC56B3E8",
+              "type": "String"
+          },
+          "loadBalancers_dcos_agent_lb_FC56B3E8_id_7": {
+              "defaultValue": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/dcos-agent-lb-FC56B3E8/backendAddressPools/dcos-agent-pool-FC56B3E8",
+              "type": "String"
+          },
+          "loadBalancers_dcos_agent_lb_FC56B3E8_id_8": {
+              "defaultValue": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/dcos-agent-lb-FC56B3E8/probes/tcpPort8080Probe",
+              "type": "String"
+          },
+          "loadBalancers_dcos_master_lb_FC56B3E8_id": {
+              "defaultValue": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/dcos-master-lb-FC56B3E8/frontendIPConfigurations/dcos-master-lbFrontEnd-FC56B3E8",
+              "type": "String"
+          },
+          "loadBalancers_dcos_master_lb_FC56B3E8_id_1": {
+              "defaultValue": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/dcos-master-lb-FC56B3E8/frontendIPConfigurations/dcos-master-lbFrontEnd-FC56B3E8",
+              "type": "String"
+          }
+      },
+      "variables": {},
+      "resources": [
+          {
+              "type": "Microsoft.Compute/availabilitySets",
+              "name": "[parameters('availabilitySets_dcos_master_availabilitySet_FC56B3E8_name')]",
+              "apiVersion": "2015-06-15",
+              "location": "northeurope",
+              "properties": {
+                  "platformUpdateDomainCount": 5,
+                  "platformFaultDomainCount": 3
+              },
+              "resources": [],
+              "dependsOn": []
+          },
+          {
+              "type": "Microsoft.Compute/virtualMachines",
+              "name": "[parameters('virtualMachines_dcos_master_FC56B3E8_0_name')]",
+              "apiVersion": "2015-06-15",
+              "location": "northeurope",
+              "tags": {
+                  "creationSource": "acs-dcos-master-FC56B3E8-0"
+              },
+              "properties": {
+                  "availabilitySet": {
+                      "id": "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_dcos_master_availabilitySet_FC56B3E8_name'))]"
+                  },
+                  "hardwareProfile": {
+                      "vmSize": "Standard_D2"
+                  },
+                  "storageProfile": {
+                      "imageReference": {
+                          "publisher": "Canonical",
+                          "offer": "UbuntuServer",
+                          "sku": "16.04.0-LTS",
+                          "version": "16.04.201606270"
+                      },
+                      "osDisk": {
+                          "name": "[concat(parameters('virtualMachines_dcos_master_FC56B3E8_0_name'),'-osdisk')]",
+                          "createOption": "FromImage",
+                          "vhd": {
+                              "uri": "[concat('https', '://', parameters('storageAccounts_wdbiioyq5qxv4mstr0_name'), '.blob.core.windows.net', concat('/vhds/', parameters('virtualMachines_dcos_master_FC56B3E8_0_name'),'-osdisk.vhd'))]"
+                          },
+                          "caching": "ReadWrite"
+                      },
+                      "dataDisks": []
+                  },
+                  "osProfile": {
+                      "computerName": "[parameters('virtualMachines_dcos_master_FC56B3E8_0_name')]",
+                      "adminUsername": "adm_demo",
+                      "customData": "I2Nsb3VkLWNvbmZpZwoKeyJib290Y21kIjogWyJiYXNoIC1jIFwiaWYgWyAhIC1mIC92YXIvbGliL3NkYi1ncHQgXTt0aGVuIGVjaG8gRENPUy01ODkwO3BhcnRlZCAtcyAvZGV2L3NkYiBta2xhYmVsIGdwdDt0b3VjaCAvdmFyL2xpYi9zZGItZ3B0O2ZpXCIiXSwgImRpc2tfc2V0dXAiOiB7ImVwaGVtZXJhbDAiOiB7ImxheW91dCI6IFs1MCwgNTBdLCAib3ZlcndyaXRlIjogdHJ1ZSwgInRhYmxlX3R5cGUiOiAiZ3B0In19LCAiZnNfc2V0dXAiOiBbeyJkZXZpY2UiOiAiZXBoZW1lcmFsMC4xIiwgImZpbGVzeXN0ZW0iOiAiZXh0NCIsICJvdmVyd3JpdGUiOiB0cnVlfSwgeyJkZXZpY2UiOiAiZXBoZW1lcmFsMC4yIiwgImZpbGVzeXN0ZW0iOiAiZXh0NCIsICJvdmVyd3JpdGUiOiB0cnVlfV0sICJtb3VudHMiOiBbWyJlcGhlbWVyYWwwLjEiLCAiL3Zhci9saWIvbWVzb3MiXSwgWyJlcGhlbWVyYWwwLjIiLCAiL3Zhci9saWIvZG9ja2VyIl1dLCAicnVuY21kIjogW1sibG4iLCAiLXMiLCAiL2Jpbi9ybSIsICIvdXNyL2Jpbi9ybSJdLCBbImxuIiwgIi1zIiwgIi9iaW4vbWtkaXIiLCAiL3Vzci9iaW4vbWtkaXIiXSwgWyJsbiIsICItcyIsICIvYmluL3RhciIsICIvdXNyL2Jpbi90YXIiXSwgWyJsbiIsICItcyIsICIvYmluL2xuIiwgIi91c3IvYmluL2xuIl0sIFsibG4iLCAiLXMiLCAiL2Jpbi9jcCIsICIvdXNyL2Jpbi9jcCJdLCBbImxuIiwgIi1zIiwgIi9iaW4vc3lzdGVtY3RsIiwgIi91c3IvYmluL3N5c3RlbWN0bCJdLCBbImxuIiwgIi1zIiwgIi9iaW4vbW91bnQiLCAiL3Vzci9iaW4vbW91bnQiXSwgWyJsbiIsICItcyIsICIvYmluL2Jhc2giLCAiL3Vzci9iaW4vYmFzaCJdLCBbImxuIiwgIi1zIiwgIi91c3Ivc2Jpbi91c2VyYWRkIiwgIi91c3IvYmluL3VzZXJhZGQiXSwgWyJzeXN0ZW1jdGwiLCAiZGlzYWJsZSIsICItLW5vdyIsICJyZXNvbHZjb25mLnNlcnZpY2UiXSwgWyJzeXN0ZW1jdGwiLCAibWFzayIsICItLW5vdyIsICJseGMtbmV0LnNlcnZpY2UiXSwgIm1rZGlyIC92YXIvbGliL21lc29zL2Rjb3MiLCAiY3VybCAtZkxzU3YgLS1yZXRyeSAyMCAtWSAxMDAwMDAgLXkgNjAgLW8gL3Zhci9saWIvbWVzb3MvZGNvcy8xLmRlYiBodHRwczovL2F6ODM3MjAzLnZvLm1zZWNuZC5uZXQvZGNvcy1kZXBzL2xpYmlwc2V0M182LjI5LTFfYW1kNjQuZGViIiwgImN1cmwgLWZMc1N2IC0tcmV0cnkgMjAgLVkgMTAwMDAwIC15IDYwIC1vIC92YXIvbGliL21lc29zL2Rjb3MvMi5kZWIgaHR0cHM6Ly9hejgzNzIwMy52by5tc2VjbmQubmV0L2Rjb3MtZGVwcy9pcHNldF82LjI5LTFfYW1kNjQuZGViIiwgImN1cmwgLWZMc1N2IC0tcmV0cnkgMjAgLVkgMTAwMDAwIC15IDYwIC1vIC92YXIvbGliL21lc29zL2Rjb3MvMy5kZWIgaHR0cHM6Ly9hejgzNzIwMy52by5tc2VjbmQubmV0L2Rjb3MtZGVwcy91bnppcF82LjAtMjB1YnVudHUxX2FtZDY0LmRlYiIsICJjdXJsIC1mTHNTdiAtLXJldHJ5IDIwIC1ZIDEwMDAwMCAteSA2MCAtbyAvdmFyL2xpYi9tZXNvcy9kY29zLzQuZGViIGh0dHBzOi8vYXo4MzcyMDMudm8ubXNlY25kLm5ldC9kY29zLWRlcHMvbGlibHRkbDdfMi40LjYtMC4xX2FtZDY0LmRlYiIsICJzdWRvIHNlZCAtaSBcInMvXlBvcnQgMjIkL1BvcnQgMjJcXG5Qb3J0IDIyMjIvMVwiIC9ldGMvc3NoL3NzaGRfY29uZmlnIiwgInN1ZG8gc2VydmljZSBzc2ggcmVzdGFydCIsICJiYXNoIC1jIFwidHJ5PTE7dW50aWwgZHBrZyAtaSAvdmFyL2xpYi9tZXNvcy9kY29zL3sxLDIsMyw0fS5kZWIgfHwgKCh0cnk+OSkpO2RvIGVjaG8gcmV0cnkgXFwkKCh0cnkrKykpO3NsZWVwIFxcJCgodHJ5KnRyeSkpO2RvbmVcIiIsIFsiY3AiLCAiLXAiLCAiL2V0Yy9yZXNvbHYuY29uZiIsICIvdG1wL3Jlc29sdi5jb25mIl0sIFsicm0iLCAiLWYiLCAiL2V0Yy9yZXNvbHYuY29uZiJdLCBbImNwIiwgIi1wIiwgIi90bXAvcmVzb2x2LmNvbmYiLCAiL2V0Yy9yZXNvbHYuY29uZiJdLCBbInN5c3RlbWN0bCIsICJzdGFydCIsICJkY29zLWRvY2tlci1pbnN0YWxsLnNlcnZpY2UiXSwgWyJzeXN0ZW1jdGwiLCAic3RhcnQiLCAiZGNvcy1jb25maWctd3JpdGVyLnNlcnZpY2UiXSwgWyJzeXN0ZW1jdGwiLCAicmVzdGFydCIsICJzeXN0ZW1kLWpvdXJuYWxkLnNlcnZpY2UiXSwgWyJzeXN0ZW1jdGwiLCAicmVzdGFydCIsICJkb2NrZXIuc2VydmljZSJdLCBbInN5c3RlbWN0bCIsICJzdGFydCIsICJkY29zLWxpbmstZW52LnNlcnZpY2UiXSwgWyJzeXN0ZW1jdGwiLCAiZW5hYmxlIiwgImRjb3Mtc2V0dXAuc2VydmljZSJdLCBbInN5c3RlbWN0bCIsICItLW5vLWJsb2NrIiwgInN0YXJ0IiwgImRjb3Mtc2V0dXAuc2VydmljZSJdXSwgIndyaXRlX2ZpbGVzIjogW3siY29udGVudCI6ICJodHRwczovL2Rjb3Npby5henVyZWVkZ2UubmV0L2Rjb3Mvc3RhYmxlXG4iLCAib3duZXIiOiAicm9vdCIsICJwYXRoIjogIi9ldGMvbWVzb3NwaGVyZS9zZXR1cC1mbGFncy9yZXBvc2l0b3J5LXVybCIsICJwZXJtaXNzaW9ucyI6ICIwNjQ0In0sIHsiY29udGVudCI6ICJCT09UU1RSQVBfSUQ9ZTczYmEyYjFjZDE3Nzk1ZTRkY2IzZDY2NDdkMTFhMjliOWMzNTA4NFxuIiwgIm93bmVyIjogInJvb3QiLCAicGF0aCI6ICIvZXRjL21lc29zcGhlcmUvc2V0dXAtZmxhZ3MvYm9vdHN0cmFwLWlkIiwgInBlcm1pc3Npb25zIjogIjA2NDQifSwgeyJjb250ZW50IjogIltcImRjb3MtY29uZmlnLS1zZXR1cF81NTY5NzgwNDFiNmVkMDU5Y2MwZjQ3NDUwMTA4M2UzNWVhNTY0NWI4XCIsIFwiZGNvcy1tZXRhZGF0YS0tc2V0dXBfNTU2OTc4MDQxYjZlZDA1OWNjMGY0NzQ1MDEwODNlMzVlYTU2NDViOFwiXVxuIiwgIm93bmVyIjogInJvb3QiLCAicGF0aCI6ICIvZXRjL21lc29zcGhlcmUvc2V0dXAtZmxhZ3MvY2x1c3Rlci1wYWNrYWdlcy5qc29uIiwgInBlcm1pc3Npb25zIjogIjA2NDQifSwgeyJjb250ZW50IjogIltKb3VybmFsXVxuTWF4TGV2ZWxDb25zb2xlPXdhcm5pbmdcblJhdGVMaW1pdEludGVydmFsPTFzXG5SYXRlTGltaXRCdXJzdD0yMDAwMFxuIiwgIm93bmVyIjogInJvb3QiLCAicGF0aCI6ICIvZXRjL3N5c3RlbWQvam91cm5hbGQuY29uZi5kL2Rjb3MuY29uZiIsICJwZXJtaXNzaW9ucyI6ICIwNjQ0In0sIHsiY29udGVudCI6ICJyZXhyYXk6XG4gIGxvZ2xldmVsOiBpbmZvXG4gIG1vZHVsZXM6XG4gICAgZGVmYXVsdC1hZG1pbjpcbiAgICAgIGhvc3Q6IHRjcDovLzEyNy4wLjAuMTo2MTAwM1xuICAgIGRlZmF1bHQtZG9ja2VyOlxuICAgICAgZGlzYWJsZWQ6IHRydWVcbiIsICJwYXRoIjogIi9ldGMvcmV4cmF5L2NvbmZpZy55bWwiLCAicGVybWlzc2lvbnMiOiAiMDY0NCJ9LCB7ImNvbnRlbnQiOiAiW1VuaXRdXG5BZnRlcj1uZXR3b3JrLW9ubGluZS50YXJnZXRcbldhbnRzPW5ldHdvcmstb25saW5lLnRhcmdldFxuW1NlcnZpY2VdXG5UeXBlPW9uZXNob3RcbkVudmlyb25tZW50PURFQklBTl9GUk9OVEVORD1ub25pbnRlcmFjdGl2ZVxuU3RhbmRhcmRPdXRwdXQ9am91cm5hbCtjb25zb2xlXG5TdGFuZGFyZEVycm9yPWpvdXJuYWwrY29uc29sZVxuRXhlY1N0YXJ0UHJlPS91c3IvYmluL2N1cmwgLWZMc1N2IC0tcmV0cnkgMjAgLVkgMTAwMDAwIC15IDYwIC1vIC92YXIvbGliL21lc29zL2Rjb3MvZC5kZWIgaHR0cHM6Ly9hejgzNzIwMy52by5tc2VjbmQubmV0L2Rjb3MtZGVwcy9kb2NrZXItZW5naW5lXzEuMTEuMi0wfnhlbmlhbF9hbWQ2NC5kZWJcbkV4ZWNTdGFydD0vdXNyL2Jpbi9iYXNoIC1jIFwidHJ5PTE7dW50aWwgZHBrZyAtRDMgLWkgL3Zhci9saWIvbWVzb3MvZGNvcy9kLmRlYiB8fCAoKHRyeT45KSk7ZG8gZWNobyByZXRyeSAkKCh0cnkrKykpO3NsZWVwICQoKHRyeSp0cnkpKTtkb25lO3N5c3RlbWN0bCAtLW5vdyBzdGFydCBkb2NrZXI7c3lzdGVtY3RsIHJlc3RhcnQgZG9ja2VyLnNvY2tldFwiXG4iLCAicGF0aCI6ICIvZXRjL3N5c3RlbWQvc3lzdGVtL2Rjb3MtZG9ja2VyLWluc3RhbGwuc2VydmljZSIsICJwZXJtaXNzaW9ucyI6ICIwNjQ0In0sIHsiY29udGVudCI6ICJbU2VydmljZV1cblJlc3RhcnQ9YWx3YXlzXG5TdGFydExpbWl0SW50ZXJ2YWw9MFxuUmVzdGFydFNlYz0xNVxuRXhlY1N0YXJ0UHJlPS0vc2Jpbi9pcCBsaW5rIGRlbCBkb2NrZXIwXG5FeGVjU3RhcnQ9XG5FeGVjU3RhcnQ9L3Vzci9iaW4vZG9ja2VyIGRhZW1vbiAtSCBmZDovLyAtLXN0b3JhZ2UtZHJpdmVyPW92ZXJsYXlcbiIsICJwYXRoIjogIi9ldGMvc3lzdGVtZC9zeXN0ZW0vZG9ja2VyLnNlcnZpY2UuZC9leGVjc3RhcnQuY29uZiIsICJwZXJtaXNzaW9ucyI6ICIwNjQ0In0sIHsiY29udGVudCI6ICJbVW5pdF1cblBhcnRPZj1kb2NrZXIuc2VydmljZVxuW1NvY2tldF1cbkxpc3RlblN0cmVhbT0vdmFyL3J1bi9kb2NrZXIuc29ja1xuU29ja2V0TW9kZT0wNjYwXG5Tb2NrZXRVc2VyPXJvb3RcblNvY2tldEdyb3VwPWRvY2tlclxuTGlzdGVuU3RyZWFtPTIzNzVcbkJpbmRJUHY2T25seT1ib3RoXG5bSW5zdGFsbF1cbldhbnRlZEJ5PXNvY2tldHMudGFyZ2V0XG4iLCAicGF0aCI6ICIvZXRjL3N5c3RlbWQvc3lzdGVtL2RvY2tlci5zb2NrZXQiLCAicGVybWlzc2lvbnMiOiAiMDY0NCJ9LCB7ImNvbnRlbnQiOiAiW1VuaXRdXG5SZXF1aXJlcz1kY29zLXNldHVwLnNlcnZpY2VcbkFmdGVyPWRjb3Mtc2V0dXAuc2VydmljZVxuW1NlcnZpY2VdXG5UeXBlPW9uZXNob3RcbkVudmlyb25tZW50RmlsZT0vZXRjL2Vudmlyb25tZW50XG5FbnZpcm9ubWVudEZpbGU9L29wdC9tZXNvc3BoZXJlL2Vudmlyb25tZW50XG5FeGVjU3RhcnQ9L3Vzci9iaW4vYmFzaCAtYyBcImVjaG8gJChkZXRlY3RfaXApICQoaG9zdG5hbWUpID4gL2V0Yy9ob3N0c1wiXG4iLCAicGF0aCI6ICIvZXRjL3N5c3RlbWQvc3lzdGVtL2Rjb3MtY29uZmlnLXdyaXRlci5zZXJ2aWNlIiwgInBlcm1pc3Npb25zIjogIjA2NDQifSwgeyJjb250ZW50IjogIk1FU09TX0NMVVNURVI9ZGNvcy1tYXN0ZXItaXAtbGJubGFibWdtdC1GQzU2QjNFOFxuIiwgInBhdGgiOiAiL2V0Yy9tZXNvc3BoZXJlL3NldHVwLXBhY2thZ2VzL2Rjb3MtcHJvdmlkZXItYXp1cmUtLXNldHVwL2V0Yy9tZXNvcy1tYXN0ZXItcHJvdmlkZXIifSwgeyJjb250ZW50IjogIkFETUlOUk9VVEVSX0FDVElWQVRFX0FVVEhfTU9EVUxFPWZhbHNlXG4iLCAicGF0aCI6ICIvZXRjL21lc29zcGhlcmUvc2V0dXAtcGFja2FnZXMvZGNvcy1wcm92aWRlci1henVyZS0tc2V0dXAvZXRjL2FkbWlucm91dGVyLmVudiJ9LCB7ImNvbnRlbnQiOiAiW1wiMTcyLjE2LjAuNVwiXVxuIiwgInBhdGgiOiAiL2V0Yy9tZXNvc3BoZXJlL3NldHVwLXBhY2thZ2VzL2Rjb3MtcHJvdmlkZXItYXp1cmUtLXNldHVwL2V0Yy9tYXN0ZXJfbGlzdCJ9LCB7ImNvbnRlbnQiOiAiRVhISUJJVE9SX0JBQ0tFTkQ9QVpVUkVcbkFaVVJFX0NPTlRBSU5FUj1kY29zLWV4aGliaXRvclxuQVpVUkVfUFJFRklYPWRjb3MtbWFzdGVyLWlwLWxibmxhYm1nbXQtRkM1NkIzRThcbiIsICJwYXRoIjogIi9ldGMvbWVzb3NwaGVyZS9zZXR1cC1wYWNrYWdlcy9kY29zLXByb3ZpZGVyLWF6dXJlLS1zZXR1cC9ldGMvZXhoaWJpdG9yIn0sIHsiY29udGVudCI6ICJjb20ubmV0ZmxpeC5leGhpYml0b3IuYXp1cmUuYWNjb3VudC1uYW1lPXdkYmlpb3lxNXF4djRtc3RyMFxuY29tLm5ldGZsaXguZXhoaWJpdG9yLmF6dXJlLmFjY291bnQta2V5PU9Ydmh2bEpwcGlRQmhldkt1eXd4K29wYU9NbjIzVDBHczRqaEd2UHdYWkMzTkRNZlZxMTk1eWJuMlAyNzFCSTVHc3JYS0xxL1ExV3RubEdBZ1dScW9RPT1cbiIsICJwYXRoIjogIi9ldGMvbWVzb3NwaGVyZS9zZXR1cC1wYWNrYWdlcy9kY29zLXByb3ZpZGVyLWF6dXJlLS1zZXR1cC9ldGMvZXhoaWJpdG9yLnByb3BlcnRpZXMifSwgeyJjb250ZW50IjogIntcInVpQ29uZmlndXJhdGlvblwiOntcInBsdWdpbnNcIjp7XCJiYW5uZXJcIjp7XCJlbmFibGVkXCI6ZmFsc2UsXCJiYWNrZ3JvdW5kQ29sb3JcIjpcIiMxRTIzMkZcIixcImZvcmVncm91bmRDb2xvclwiOlwiI0ZGRkZGRlwiLFwiaGVhZGVyVGl0bGVcIjpudWxsLFwiaGVhZGVyQ29udGVudFwiOm51bGwsXCJmb290ZXJDb250ZW50XCI6bnVsbCxcImltYWdlUGF0aFwiOm51bGwsXCJkaXNtaXNzaWJsZVwiOm51bGx9LFwiYnJhbmRpbmdcIjp7XCJlbmFibGVkXCI6ZmFsc2V9LFwiZXh0ZXJuYWwtbGlua3NcIjoge1wiZW5hYmxlZFwiOiBmYWxzZX0sXG5cblwiYXV0aGVudGljYXRpb25cIjp7XCJlbmFibGVkXCI6ZmFsc2V9LFxuXG5cIm9hdXRoXCI6e1wiZW5hYmxlZFwiOmZhbHNlLFwiYXV0aEhvc3RcIjpcImh0dHBzOi8vZGNvcy5hdXRoMC5jb21cIn0sXG5cblxuXCJ0cmFja2luZ1wiOntcImVuYWJsZWRcIjpmYWxzZX19fX1cbiIsICJwYXRoIjogIi9ldGMvbWVzb3NwaGVyZS9zZXR1cC1wYWNrYWdlcy9kY29zLXByb3ZpZGVyLWF6dXJlLS1zZXR1cC9ldGMvdWktY29uZmlnLmpzb24ifSwgeyJjb250ZW50IjogInt9IiwgInBhdGgiOiAiL2V0Yy9tZXNvc3BoZXJlL3NldHVwLXBhY2thZ2VzL2Rjb3MtcHJvdmlkZXItYXp1cmUtLXNldHVwL3BrZ2luZm8uanNvbiJ9LCB7ImNvbnRlbnQiOiAiW1VuaXRdXG5CZWZvcmU9ZGNvcy50YXJnZXRcbltTZXJ2aWNlXVxuVHlwZT1vbmVzaG90XG5TdGFuZGFyZE91dHB1dD1qb3VybmFsK2NvbnNvbGVcblN0YW5kYXJkRXJyb3I9am91cm5hbCtjb25zb2xlXG5FeGVjU3RhcnRQcmU9L3Vzci9iaW4vbWtkaXIgLXAgL2V0Yy9wcm9maWxlLmRcbkV4ZWNTdGFydD0vdXNyL2Jpbi9sbiAtc2YgL29wdC9tZXNvc3BoZXJlL2Vudmlyb25tZW50LmV4cG9ydCAvZXRjL3Byb2ZpbGUuZC9kY29zLnNoXG4iLCAicGF0aCI6ICIvZXRjL3N5c3RlbWQvc3lzdGVtL2Rjb3MtbGluay1lbnYuc2VydmljZSIsICJwZXJtaXNzaW9ucyI6ICIwNjQ0In0sIHsiY29udGVudCI6ICJbVW5pdF1cbkRlc2NyaXB0aW9uPVBrZ3BhbmRhOiBEb3dubG9hZCBEQy9PUyB0byB0aGlzIGhvc3QuXG5BZnRlcj1uZXR3b3JrLW9ubGluZS50YXJnZXRcbldhbnRzPW5ldHdvcmstb25saW5lLnRhcmdldFxuQ29uZGl0aW9uUGF0aEV4aXN0cz0hL29wdC9tZXNvc3BoZXJlL1xuW1NlcnZpY2VdXG5FbnZpcm9ubWVudEZpbGU9L2V0Yy9tZXNvc3BoZXJlL3NldHVwLWZsYWdzL2Jvb3RzdHJhcC1pZFxuVHlwZT1vbmVzaG90XG5TdGFuZGFyZE91dHB1dD1qb3VybmFsK2NvbnNvbGVcblN0YW5kYXJkRXJyb3I9am91cm5hbCtjb25zb2xlXG5FeGVjU3RhcnRQcmU9L3Vzci9iaW4vY3VybCAtLWtlZXBhbGl2ZS10aW1lIDIgLWZMc1N2IC0tcmV0cnkgMjAgLVkgMTAwMDAwIC15IDYwIC1vIC92YXIvbGliL21lc29zL2Rjb3MvYm9vdHN0cmFwLnRhci54eiBodHRwczovL2Rjb3Npby5henVyZWVkZ2UubmV0L2Rjb3Mvc3RhYmxlL2Jvb3RzdHJhcC8ke0JPT1RTVFJBUF9JRH0uYm9vdHN0cmFwLnRhci54elxuRXhlY1N0YXJ0UHJlPS91c3IvYmluL21rZGlyIC1wIC9vcHQvbWVzb3NwaGVyZVxuRXhlY1N0YXJ0PS91c3IvYmluL3RhciAtYXhmIC92YXIvbGliL21lc29zL2Rjb3MvYm9vdHN0cmFwLnRhci54eiAtQyAvb3B0L21lc29zcGhlcmVcbkV4ZWNTdGFydFBvc3Q9LS91c3IvYmluL3JtIC1mIC92YXIvbGliL21lc29zL2Rjb3MvYm9vdHN0cmFwLnRhci54elxuIiwgInBhdGgiOiAiL2V0Yy9zeXN0ZW1kL3N5c3RlbS9kY29zLWRvd25sb2FkLnNlcnZpY2UiLCAicGVybWlzc2lvbnMiOiAiMDY0NCJ9LCB7ImNvbnRlbnQiOiAiW1VuaXRdXG5EZXNjcmlwdGlvbj1Qa2dwYW5kYTogU3BlY2lhbGl6ZSBEQy9PUyBmb3IgdGhpcyBob3N0LlxuUmVxdWlyZXM9ZGNvcy1kb3dubG9hZC5zZXJ2aWNlXG5BZnRlcj1kY29zLWRvd25sb2FkLnNlcnZpY2VcbltTZXJ2aWNlXVxuVHlwZT1vbmVzaG90XG5TdGFuZGFyZE91dHB1dD1qb3VybmFsK2NvbnNvbGVcblN0YW5kYXJkRXJyb3I9am91cm5hbCtjb25zb2xlXG5FbnZpcm9ubWVudEZpbGU9L29wdC9tZXNvc3BoZXJlL2Vudmlyb25tZW50XG5FeGVjU3RhcnQ9L29wdC9tZXNvc3BoZXJlL2Jpbi9wa2dwYW5kYSBzZXR1cCAtLW5vLWJsb2NrLXN5c3RlbWRcbltJbnN0YWxsXVxuV2FudGVkQnk9bXVsdGktdXNlci50YXJnZXRcbiIsICJwYXRoIjogIi9ldGMvc3lzdGVtZC9zeXN0ZW0vZGNvcy1zZXR1cC5zZXJ2aWNlIiwgInBlcm1pc3Npb25zIjogIjA2NDQifSwgeyJjb250ZW50IjogIiIsICJwYXRoIjogIi9ldGMvbWVzb3NwaGVyZS9yb2xlcy9tYXN0ZXIifSwgeyJjb250ZW50IjogIiIsICJwYXRoIjogIi9ldGMvbWVzb3NwaGVyZS9yb2xlcy9henVyZV9tYXN0ZXIifSwgeyJjb250ZW50IjogIiIsICJwYXRoIjogIi9ldGMvbWVzb3NwaGVyZS9yb2xlcy9henVyZSJ9XX0=",
+                      "linuxConfiguration": {
+                          "disablePasswordAuthentication": true,
+                          "ssh": {
+                              "publicKeys": [
+                                  {
+                                      "path": "/home/adm_demo/.ssh/authorized_keys",
+                                      "keyData": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDgrUqoAoc3WXfF4knQ1WF/ZJn3QFbuGzp4Q5RZXCpG2HAYbTcDrvBWpkfsN0AIJUMEptpuZ4zInDmUJE0cVzBEPXFlTjMCYHWx4c/Z/DBswVjnDKfKxBmLpAPz2YIVf3SSxJNxEm80ktDBC8gM+/sMuZOP/ruBTIV1aA22tVFqrXBXKWwP6bzFZyBXJHzDpp9QNJjC2hs8S0VQ8xtgsGW8h1eDsEFowe9x/qpB90NG6Ugpfa0MD/grRRy8Bf9l4bjEE60XAyzgGhZoFHnXn31615sPphWbRU8GYLAXyN4YWv9k+PjC/BLHc8zxi87NCrmhvdN88MffH3ykCIDKJ9BB"
+                                  }
+                              ]
+                          }
+                      },
+                      "secrets": [],
+                      "adminPassword": "[parameters('virtualMachines_dcos_master_FC56B3E8_0_adminPassword')]"
+                  },
+                  "networkProfile": {
+                      "networkInterfaces": [
+                          {
+                              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_dcos_master_FC56B3E8_nic_0_name'))]"
+                          }
+                      ]
+                  }
+              },
+              "resources": [],
+              "dependsOn": [
+                  "[resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySets_dcos_master_availabilitySet_FC56B3E8_name'))]",
+                  "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_wdbiioyq5qxv4mstr0_name'))]",
+                  "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_dcos_master_FC56B3E8_nic_0_name'))]"
+              ]
+          },
+          {
+              "type": "Microsoft.Compute/virtualMachineScaleSets",
+              "sku": {
+                  "name": "Standard_A0",
+                  "tier": "Standard",
+                  "capacity": 2
+              },
+              "name": "[parameters('virtualMachineScaleSets_dcos_agent_private_FC56B3E8_vmss0_name')]",
+              "apiVersion": "2015-06-15",
+              "location": "northeurope",
+              "tags": {
+                  "creationSource": "acs-dcos-agent-private-FC56B3E8-vmss0"
+              },
+              "properties": {
+                  "upgradePolicy": {
+                      "mode": "Manual"
+                  },
+                  "virtualMachineProfile": {
+                      "osProfile": {
+                          "computerNamePrefix": "dcos-agent-private-FC56B3E8",
+                          "adminUsername": "adm_demo",
+                          "customData": "I2Nsb3VkLWNvbmZpZwoKeyJib290Y21kIjogWyJiYXNoIC1jIFwiaWYgWyAhIC1mIC92YXIvbGliL3NkYi1ncHQgXTt0aGVuIGVjaG8gRENPUy01ODkwO3BhcnRlZCAtcyAvZGV2L3NkYiBta2xhYmVsIGdwdDt0b3VjaCAvdmFyL2xpYi9zZGItZ3B0O2ZpXCIiXSwgImRpc2tfc2V0dXAiOiB7ImVwaGVtZXJhbDAiOiB7ImxheW91dCI6IFs1MCwgNTBdLCAib3ZlcndyaXRlIjogdHJ1ZSwgInRhYmxlX3R5cGUiOiAiZ3B0In19LCAiZnNfc2V0dXAiOiBbeyJkZXZpY2UiOiAiZXBoZW1lcmFsMC4xIiwgImZpbGVzeXN0ZW0iOiAiZXh0NCIsICJvdmVyd3JpdGUiOiB0cnVlfSwgeyJkZXZpY2UiOiAiZXBoZW1lcmFsMC4yIiwgImZpbGVzeXN0ZW0iOiAiZXh0NCIsICJvdmVyd3JpdGUiOiB0cnVlfV0sICJtb3VudHMiOiBbWyJlcGhlbWVyYWwwLjEiLCAiL3Zhci9saWIvbWVzb3MiXSwgWyJlcGhlbWVyYWwwLjIiLCAiL3Zhci9saWIvZG9ja2VyIl1dLCAicnVuY21kIjogW1sibG4iLCAiLXMiLCAiL2Jpbi9ybSIsICIvdXNyL2Jpbi9ybSJdLCBbImxuIiwgIi1zIiwgIi9iaW4vbWtkaXIiLCAiL3Vzci9iaW4vbWtkaXIiXSwgWyJsbiIsICItcyIsICIvYmluL3RhciIsICIvdXNyL2Jpbi90YXIiXSwgWyJsbiIsICItcyIsICIvYmluL2xuIiwgIi91c3IvYmluL2xuIl0sIFsibG4iLCAiLXMiLCAiL2Jpbi9jcCIsICIvdXNyL2Jpbi9jcCJdLCBbImxuIiwgIi1zIiwgIi9iaW4vc3lzdGVtY3RsIiwgIi91c3IvYmluL3N5c3RlbWN0bCJdLCBbImxuIiwgIi1zIiwgIi9iaW4vbW91bnQiLCAiL3Vzci9iaW4vbW91bnQiXSwgWyJsbiIsICItcyIsICIvYmluL2Jhc2giLCAiL3Vzci9iaW4vYmFzaCJdLCBbImxuIiwgIi1zIiwgIi91c3Ivc2Jpbi91c2VyYWRkIiwgIi91c3IvYmluL3VzZXJhZGQiXSwgWyJzeXN0ZW1jdGwiLCAiZGlzYWJsZSIsICItLW5vdyIsICJyZXNvbHZjb25mLnNlcnZpY2UiXSwgWyJzeXN0ZW1jdGwiLCAibWFzayIsICItLW5vdyIsICJseGMtbmV0LnNlcnZpY2UiXSwgIm1rZGlyIC92YXIvbGliL21lc29zL2Rjb3MiLCAiY3VybCAtZkxzU3YgLS1yZXRyeSAyMCAtWSAxMDAwMDAgLXkgNjAgLW8gL3Zhci9saWIvbWVzb3MvZGNvcy8xLmRlYiBodHRwczovL2F6ODM3MjAzLnZvLm1zZWNuZC5uZXQvZGNvcy1kZXBzL2xpYmlwc2V0M182LjI5LTFfYW1kNjQuZGViIiwgImN1cmwgLWZMc1N2IC0tcmV0cnkgMjAgLVkgMTAwMDAwIC15IDYwIC1vIC92YXIvbGliL21lc29zL2Rjb3MvMi5kZWIgaHR0cHM6Ly9hejgzNzIwMy52by5tc2VjbmQubmV0L2Rjb3MtZGVwcy9pcHNldF82LjI5LTFfYW1kNjQuZGViIiwgImN1cmwgLWZMc1N2IC0tcmV0cnkgMjAgLVkgMTAwMDAwIC15IDYwIC1vIC92YXIvbGliL21lc29zL2Rjb3MvMy5kZWIgaHR0cHM6Ly9hejgzNzIwMy52by5tc2VjbmQubmV0L2Rjb3MtZGVwcy91bnppcF82LjAtMjB1YnVudHUxX2FtZDY0LmRlYiIsICJjdXJsIC1mTHNTdiAtLXJldHJ5IDIwIC1ZIDEwMDAwMCAteSA2MCAtbyAvdmFyL2xpYi9tZXNvcy9kY29zLzQuZGViIGh0dHBzOi8vYXo4MzcyMDMudm8ubXNlY25kLm5ldC9kY29zLWRlcHMvbGlibHRkbDdfMi40LjYtMC4xX2FtZDY0LmRlYiIsICJiYXNoIC1jIFwidHJ5PTE7dW50aWwgZHBrZyAtaSAvdmFyL2xpYi9tZXNvcy9kY29zL3sxLDIsMyw0fS5kZWIgfHwgKCh0cnk+OSkpO2RvIGVjaG8gcmV0cnkgXFwkKCh0cnkrKykpO3NsZWVwIFxcJCgodHJ5KnRyeSkpO2RvbmVcIiIsIFsiY3AiLCAiLXAiLCAiL2V0Yy9yZXNvbHYuY29uZiIsICIvdG1wL3Jlc29sdi5jb25mIl0sIFsicm0iLCAiLWYiLCAiL2V0Yy9yZXNvbHYuY29uZiJdLCBbImNwIiwgIi1wIiwgIi90bXAvcmVzb2x2LmNvbmYiLCAiL2V0Yy9yZXNvbHYuY29uZiJdLCBbInN5c3RlbWN0bCIsICJzdGFydCIsICJkY29zLWRvY2tlci1pbnN0YWxsLnNlcnZpY2UiXSwgWyJzeXN0ZW1jdGwiLCAic3RhcnQiLCAiZGNvcy1jb25maWctd3JpdGVyLnNlcnZpY2UiXSwgWyJzeXN0ZW1jdGwiLCAicmVzdGFydCIsICJzeXN0ZW1kLWpvdXJuYWxkLnNlcnZpY2UiXSwgWyJzeXN0ZW1jdGwiLCAicmVzdGFydCIsICJkb2NrZXIuc2VydmljZSJdLCBbInN5c3RlbWN0bCIsICJzdGFydCIsICJkY29zLWxpbmstZW52LnNlcnZpY2UiXSwgWyJzeXN0ZW1jdGwiLCAiZW5hYmxlIiwgImRjb3Mtc2V0dXAuc2VydmljZSJdLCBbInN5c3RlbWN0bCIsICItLW5vLWJsb2NrIiwgInN0YXJ0IiwgImRjb3Mtc2V0dXAuc2VydmljZSJdXSwgIndyaXRlX2ZpbGVzIjogW3siY29udGVudCI6ICJodHRwczovL2Rjb3Npby5henVyZWVkZ2UubmV0L2Rjb3Mvc3RhYmxlXG4iLCAib3duZXIiOiAicm9vdCIsICJwYXRoIjogIi9ldGMvbWVzb3NwaGVyZS9zZXR1cC1mbGFncy9yZXBvc2l0b3J5LXVybCIsICJwZXJtaXNzaW9ucyI6ICIwNjQ0In0sIHsiY29udGVudCI6ICJCT09UU1RSQVBfSUQ9ZTczYmEyYjFjZDE3Nzk1ZTRkY2IzZDY2NDdkMTFhMjliOWMzNTA4NFxuIiwgIm93bmVyIjogInJvb3QiLCAicGF0aCI6ICIvZXRjL21lc29zcGhlcmUvc2V0dXAtZmxhZ3MvYm9vdHN0cmFwLWlkIiwgInBlcm1pc3Npb25zIjogIjA2NDQifSwgeyJjb250ZW50IjogIltcImRjb3MtY29uZmlnLS1zZXR1cF81NTY5NzgwNDFiNmVkMDU5Y2MwZjQ3NDUwMTA4M2UzNWVhNTY0NWI4XCIsIFwiZGNvcy1tZXRhZGF0YS0tc2V0dXBfNTU2OTc4MDQxYjZlZDA1OWNjMGY0NzQ1MDEwODNlMzVlYTU2NDViOFwiXVxuIiwgIm93bmVyIjogInJvb3QiLCAicGF0aCI6ICIvZXRjL21lc29zcGhlcmUvc2V0dXAtZmxhZ3MvY2x1c3Rlci1wYWNrYWdlcy5qc29uIiwgInBlcm1pc3Npb25zIjogIjA2NDQifSwgeyJjb250ZW50IjogIltKb3VybmFsXVxuTWF4TGV2ZWxDb25zb2xlPXdhcm5pbmdcblJhdGVMaW1pdEludGVydmFsPTFzXG5SYXRlTGltaXRCdXJzdD0yMDAwMFxuIiwgIm93bmVyIjogInJvb3QiLCAicGF0aCI6ICIvZXRjL3N5c3RlbWQvam91cm5hbGQuY29uZi5kL2Rjb3MuY29uZiIsICJwZXJtaXNzaW9ucyI6ICIwNjQ0In0sIHsiY29udGVudCI6ICJyZXhyYXk6XG4gIGxvZ2xldmVsOiBpbmZvXG4gIG1vZHVsZXM6XG4gICAgZGVmYXVsdC1hZG1pbjpcbiAgICAgIGhvc3Q6IHRjcDovLzEyNy4wLjAuMTo2MTAwM1xuICAgIGRlZmF1bHQtZG9ja2VyOlxuICAgICAgZGlzYWJsZWQ6IHRydWVcbiIsICJwYXRoIjogIi9ldGMvcmV4cmF5L2NvbmZpZy55bWwiLCAicGVybWlzc2lvbnMiOiAiMDY0NCJ9LCB7ImNvbnRlbnQiOiAiW1VuaXRdXG5BZnRlcj1uZXR3b3JrLW9ubGluZS50YXJnZXRcbldhbnRzPW5ldHdvcmstb25saW5lLnRhcmdldFxuW1NlcnZpY2VdXG5UeXBlPW9uZXNob3RcbkVudmlyb25tZW50PURFQklBTl9GUk9OVEVORD1ub25pbnRlcmFjdGl2ZVxuU3RhbmRhcmRPdXRwdXQ9am91cm5hbCtjb25zb2xlXG5TdGFuZGFyZEVycm9yPWpvdXJuYWwrY29uc29sZVxuRXhlY1N0YXJ0UHJlPS91c3IvYmluL2N1cmwgLWZMc1N2IC0tcmV0cnkgMjAgLVkgMTAwMDAwIC15IDYwIC1vIC92YXIvbGliL21lc29zL2Rjb3MvZC5kZWIgaHR0cHM6Ly9hejgzNzIwMy52by5tc2VjbmQubmV0L2Rjb3MtZGVwcy9kb2NrZXItZW5naW5lXzEuMTEuMi0wfnhlbmlhbF9hbWQ2NC5kZWJcbkV4ZWNTdGFydD0vdXNyL2Jpbi9iYXNoIC1jIFwidHJ5PTE7dW50aWwgZHBrZyAtRDMgLWkgL3Zhci9saWIvbWVzb3MvZGNvcy9kLmRlYiB8fCAoKHRyeT45KSk7ZG8gZWNobyByZXRyeSAkKCh0cnkrKykpO3NsZWVwICQoKHRyeSp0cnkpKTtkb25lO3N5c3RlbWN0bCAtLW5vdyBzdGFydCBkb2NrZXI7c3lzdGVtY3RsIHJlc3RhcnQgZG9ja2VyLnNvY2tldFwiXG4iLCAicGF0aCI6ICIvZXRjL3N5c3RlbWQvc3lzdGVtL2Rjb3MtZG9ja2VyLWluc3RhbGwuc2VydmljZSIsICJwZXJtaXNzaW9ucyI6ICIwNjQ0In0sIHsiY29udGVudCI6ICJbU2VydmljZV1cblJlc3RhcnQ9YWx3YXlzXG5TdGFydExpbWl0SW50ZXJ2YWw9MFxuUmVzdGFydFNlYz0xNVxuRXhlY1N0YXJ0UHJlPS0vc2Jpbi9pcCBsaW5rIGRlbCBkb2NrZXIwXG5FeGVjU3RhcnQ9XG5FeGVjU3RhcnQ9L3Vzci9iaW4vZG9ja2VyIGRhZW1vbiAtSCBmZDovLyAtLXN0b3JhZ2UtZHJpdmVyPW92ZXJsYXlcbiIsICJwYXRoIjogIi9ldGMvc3lzdGVtZC9zeXN0ZW0vZG9ja2VyLnNlcnZpY2UuZC9leGVjc3RhcnQuY29uZiIsICJwZXJtaXNzaW9ucyI6ICIwNjQ0In0sIHsiY29udGVudCI6ICJbVW5pdF1cblBhcnRPZj1kb2NrZXIuc2VydmljZVxuW1NvY2tldF1cbkxpc3RlblN0cmVhbT0vdmFyL3J1bi9kb2NrZXIuc29ja1xuU29ja2V0TW9kZT0wNjYwXG5Tb2NrZXRVc2VyPXJvb3RcblNvY2tldEdyb3VwPWRvY2tlclxuTGlzdGVuU3RyZWFtPTIzNzVcbkJpbmRJUHY2T25seT1ib3RoXG5bSW5zdGFsbF1cbldhbnRlZEJ5PXNvY2tldHMudGFyZ2V0XG4iLCAicGF0aCI6ICIvZXRjL3N5c3RlbWQvc3lzdGVtL2RvY2tlci5zb2NrZXQiLCAicGVybWlzc2lvbnMiOiAiMDY0NCJ9LCB7ImNvbnRlbnQiOiAiW1VuaXRdXG5SZXF1aXJlcz1kY29zLXNldHVwLnNlcnZpY2VcbkFmdGVyPWRjb3Mtc2V0dXAuc2VydmljZVxuW1NlcnZpY2VdXG5UeXBlPW9uZXNob3RcbkVudmlyb25tZW50RmlsZT0vZXRjL2Vudmlyb25tZW50XG5FbnZpcm9ubWVudEZpbGU9L29wdC9tZXNvc3BoZXJlL2Vudmlyb25tZW50XG5FeGVjU3RhcnQ9L3Vzci9iaW4vYmFzaCAtYyBcImVjaG8gJChkZXRlY3RfaXApICQoaG9zdG5hbWUpID4gL2V0Yy9ob3N0c1wiXG4iLCAicGF0aCI6ICIvZXRjL3N5c3RlbWQvc3lzdGVtL2Rjb3MtY29uZmlnLXdyaXRlci5zZXJ2aWNlIiwgInBlcm1pc3Npb25zIjogIjA2NDQifSwgeyJjb250ZW50IjogIk1FU09TX0NMVVNURVI9ZGNvcy1tYXN0ZXItaXAtbGJubGFibWdtdC1GQzU2QjNFOFxuIiwgInBhdGgiOiAiL2V0Yy9tZXNvc3BoZXJlL3NldHVwLXBhY2thZ2VzL2Rjb3MtcHJvdmlkZXItYXp1cmUtLXNldHVwL2V0Yy9tZXNvcy1tYXN0ZXItcHJvdmlkZXIifSwgeyJjb250ZW50IjogIkFETUlOUk9VVEVSX0FDVElWQVRFX0FVVEhfTU9EVUxFPWZhbHNlXG4iLCAicGF0aCI6ICIvZXRjL21lc29zcGhlcmUvc2V0dXAtcGFja2FnZXMvZGNvcy1wcm92aWRlci1henVyZS0tc2V0dXAvZXRjL2FkbWlucm91dGVyLmVudiJ9LCB7ImNvbnRlbnQiOiAiW1wiMTcyLjE2LjAuNVwiXVxuIiwgInBhdGgiOiAiL2V0Yy9tZXNvc3BoZXJlL3NldHVwLXBhY2thZ2VzL2Rjb3MtcHJvdmlkZXItYXp1cmUtLXNldHVwL2V0Yy9tYXN0ZXJfbGlzdCJ9LCB7ImNvbnRlbnQiOiAiRVhISUJJVE9SX0JBQ0tFTkQ9QVpVUkVcbkFaVVJFX0NPTlRBSU5FUj1kY29zLWV4aGliaXRvclxuQVpVUkVfUFJFRklYPWRjb3MtbWFzdGVyLWlwLWxibmxhYm1nbXQtRkM1NkIzRThcbiIsICJwYXRoIjogIi9ldGMvbWVzb3NwaGVyZS9zZXR1cC1wYWNrYWdlcy9kY29zLXByb3ZpZGVyLWF6dXJlLS1zZXR1cC9ldGMvZXhoaWJpdG9yIn0sIHsiY29udGVudCI6ICJjb20ubmV0ZmxpeC5leGhpYml0b3IuYXp1cmUuYWNjb3VudC1uYW1lPXdkYmlpb3lxNXF4djRtc3RyMFxuY29tLm5ldGZsaXguZXhoaWJpdG9yLmF6dXJlLmFjY291bnQta2V5PU9Ydmh2bEpwcGlRQmhldkt1eXd4K29wYU9NbjIzVDBHczRqaEd2UHdYWkMzTkRNZlZxMTk1eWJuMlAyNzFCSTVHc3JYS0xxL1ExV3RubEdBZ1dScW9RPT1cbiIsICJwYXRoIjogIi9ldGMvbWVzb3NwaGVyZS9zZXR1cC1wYWNrYWdlcy9kY29zLXByb3ZpZGVyLWF6dXJlLS1zZXR1cC9ldGMvZXhoaWJpdG9yLnByb3BlcnRpZXMifSwgeyJjb250ZW50IjogIntcInVpQ29uZmlndXJhdGlvblwiOntcInBsdWdpbnNcIjp7XCJiYW5uZXJcIjp7XCJlbmFibGVkXCI6ZmFsc2UsXCJiYWNrZ3JvdW5kQ29sb3JcIjpcIiMxRTIzMkZcIixcImZvcmVncm91bmRDb2xvclwiOlwiI0ZGRkZGRlwiLFwiaGVhZGVyVGl0bGVcIjpudWxsLFwiaGVhZGVyQ29udGVudFwiOm51bGwsXCJmb290ZXJDb250ZW50XCI6bnVsbCxcImltYWdlUGF0aFwiOm51bGwsXCJkaXNtaXNzaWJsZVwiOm51bGx9LFwiYnJhbmRpbmdcIjp7XCJlbmFibGVkXCI6ZmFsc2V9LFwiZXh0ZXJuYWwtbGlua3NcIjoge1wiZW5hYmxlZFwiOiBmYWxzZX0sXG5cblwiYXV0aGVudGljYXRpb25cIjp7XCJlbmFibGVkXCI6ZmFsc2V9LFxuXG5cIm9hdXRoXCI6e1wiZW5hYmxlZFwiOmZhbHNlLFwiYXV0aEhvc3RcIjpcImh0dHBzOi8vZGNvcy5hdXRoMC5jb21cIn0sXG5cblxuXCJ0cmFja2luZ1wiOntcImVuYWJsZWRcIjpmYWxzZX19fX1cbiIsICJwYXRoIjogIi9ldGMvbWVzb3NwaGVyZS9zZXR1cC1wYWNrYWdlcy9kY29zLXByb3ZpZGVyLWF6dXJlLS1zZXR1cC9ldGMvdWktY29uZmlnLmpzb24ifSwgeyJjb250ZW50IjogInt9IiwgInBhdGgiOiAiL2V0Yy9tZXNvc3BoZXJlL3NldHVwLXBhY2thZ2VzL2Rjb3MtcHJvdmlkZXItYXp1cmUtLXNldHVwL3BrZ2luZm8uanNvbiJ9LCB7ImNvbnRlbnQiOiAiW1VuaXRdXG5CZWZvcmU9ZGNvcy50YXJnZXRcbltTZXJ2aWNlXVxuVHlwZT1vbmVzaG90XG5TdGFuZGFyZE91dHB1dD1qb3VybmFsK2NvbnNvbGVcblN0YW5kYXJkRXJyb3I9am91cm5hbCtjb25zb2xlXG5FeGVjU3RhcnRQcmU9L3Vzci9iaW4vbWtkaXIgLXAgL2V0Yy9wcm9maWxlLmRcbkV4ZWNTdGFydD0vdXNyL2Jpbi9sbiAtc2YgL29wdC9tZXNvc3BoZXJlL2Vudmlyb25tZW50LmV4cG9ydCAvZXRjL3Byb2ZpbGUuZC9kY29zLnNoXG4iLCAicGF0aCI6ICIvZXRjL3N5c3RlbWQvc3lzdGVtL2Rjb3MtbGluay1lbnYuc2VydmljZSIsICJwZXJtaXNzaW9ucyI6ICIwNjQ0In0sIHsiY29udGVudCI6ICJbVW5pdF1cbkRlc2NyaXB0aW9uPVBrZ3BhbmRhOiBEb3dubG9hZCBEQy9PUyB0byB0aGlzIGhvc3QuXG5BZnRlcj1uZXR3b3JrLW9ubGluZS50YXJnZXRcbldhbnRzPW5ldHdvcmstb25saW5lLnRhcmdldFxuQ29uZGl0aW9uUGF0aEV4aXN0cz0hL29wdC9tZXNvc3BoZXJlL1xuW1NlcnZpY2VdXG5FbnZpcm9ubWVudEZpbGU9L2V0Yy9tZXNvc3BoZXJlL3NldHVwLWZsYWdzL2Jvb3RzdHJhcC1pZFxuVHlwZT1vbmVzaG90XG5TdGFuZGFyZE91dHB1dD1qb3VybmFsK2NvbnNvbGVcblN0YW5kYXJkRXJyb3I9am91cm5hbCtjb25zb2xlXG5FeGVjU3RhcnRQcmU9L3Vzci9iaW4vY3VybCAtLWtlZXBhbGl2ZS10aW1lIDIgLWZMc1N2IC0tcmV0cnkgMjAgLVkgMTAwMDAwIC15IDYwIC1vIC92YXIvbGliL21lc29zL2Rjb3MvYm9vdHN0cmFwLnRhci54eiBodHRwczovL2Rjb3Npby5henVyZWVkZ2UubmV0L2Rjb3Mvc3RhYmxlL2Jvb3RzdHJhcC8ke0JPT1RTVFJBUF9JRH0uYm9vdHN0cmFwLnRhci54elxuRXhlY1N0YXJ0UHJlPS91c3IvYmluL21rZGlyIC1wIC9vcHQvbWVzb3NwaGVyZVxuRXhlY1N0YXJ0PS91c3IvYmluL3RhciAtYXhmIC92YXIvbGliL21lc29zL2Rjb3MvYm9vdHN0cmFwLnRhci54eiAtQyAvb3B0L21lc29zcGhlcmVcbkV4ZWNTdGFydFBvc3Q9LS91c3IvYmluL3JtIC1mIC92YXIvbGliL21lc29zL2Rjb3MvYm9vdHN0cmFwLnRhci54elxuIiwgInBhdGgiOiAiL2V0Yy9zeXN0ZW1kL3N5c3RlbS9kY29zLWRvd25sb2FkLnNlcnZpY2UiLCAicGVybWlzc2lvbnMiOiAiMDY0NCJ9LCB7ImNvbnRlbnQiOiAiW1VuaXRdXG5EZXNjcmlwdGlvbj1Qa2dwYW5kYTogU3BlY2lhbGl6ZSBEQy9PUyBmb3IgdGhpcyBob3N0LlxuUmVxdWlyZXM9ZGNvcy1kb3dubG9hZC5zZXJ2aWNlXG5BZnRlcj1kY29zLWRvd25sb2FkLnNlcnZpY2VcbltTZXJ2aWNlXVxuVHlwZT1vbmVzaG90XG5TdGFuZGFyZE91dHB1dD1qb3VybmFsK2NvbnNvbGVcblN0YW5kYXJkRXJyb3I9am91cm5hbCtjb25zb2xlXG5FbnZpcm9ubWVudEZpbGU9L29wdC9tZXNvc3BoZXJlL2Vudmlyb25tZW50XG5FeGVjU3RhcnQ9L29wdC9tZXNvc3BoZXJlL2Jpbi9wa2dwYW5kYSBzZXR1cCAtLW5vLWJsb2NrLXN5c3RlbWRcbltJbnN0YWxsXVxuV2FudGVkQnk9bXVsdGktdXNlci50YXJnZXRcbiIsICJwYXRoIjogIi9ldGMvc3lzdGVtZC9zeXN0ZW0vZGNvcy1zZXR1cC5zZXJ2aWNlIiwgInBlcm1pc3Npb25zIjogIjA2NDQifSwgeyJjb250ZW50IjogIiIsICJwYXRoIjogIi9ldGMvbWVzb3NwaGVyZS9yb2xlcy9zbGF2ZSJ9LCB7ImNvbnRlbnQiOiAiIiwgInBhdGgiOiAiL2V0Yy9tZXNvc3BoZXJlL3JvbGVzL2F6dXJlIn1dfQ==",
+                          "linuxConfiguration": {
+                              "disablePasswordAuthentication": true,
+                              "ssh": {
+                                  "publicKeys": [
+                                      {
+                                          "path": "/home/adm_demo/.ssh/authorized_keys",
+                                          "keyData": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDgrUqoAoc3WXfF4knQ1WF/ZJn3QFbuGzp4Q5RZXCpG2HAYbTcDrvBWpkfsN0AIJUMEptpuZ4zInDmUJE0cVzBEPXFlTjMCYHWx4c/Z/DBswVjnDKfKxBmLpAPz2YIVf3SSxJNxEm80ktDBC8gM+/sMuZOP/ruBTIV1aA22tVFqrXBXKWwP6bzFZyBXJHzDpp9QNJjC2hs8S0VQ8xtgsGW8h1eDsEFowe9x/qpB90NG6Ugpfa0MD/grRRy8Bf9l4bjEE60XAyzgGhZoFHnXn31615sPphWbRU8GYLAXyN4YWv9k+PjC/BLHc8zxi87NCrmhvdN88MffH3ykCIDKJ9BB"
+                                      }
+                                  ]
+                              }
+                          },
+                          "secrets": [],
+                          "adminPassword": "[parameters('virtualMachineScaleSets_dcos_agent_private_FC56B3E8_vmss0_adminPassword')]"
+                      },
+                      "storageProfile": {
+                          "osDisk": {
+                              "vhdContainers": [
+                                  "https://00wdbiioyq5qxv4agntpri0.blob.core.windows.net/osdisk",
+                                  "https://60wdbiioyq5qxv4agntpri1.blob.core.windows.net/osdisk",
+                                  "https://c0wdbiioyq5qxv4agntpri2.blob.core.windows.net/osdisk",
+                                  "https://i0wdbiioyq5qxv4agntpri3.blob.core.windows.net/osdisk",
+                                  "https://o0wdbiioyq5qxv4agntpri4.blob.core.windows.net/osdisk"
+                              ],
+                              "name": "vmssosdisk",
+                              "createOption": "FromImage",
+                              "caching": "ReadOnly"
+                          },
+                          "imageReference": {
+                              "publisher": "Canonical",
+                              "offer": "UbuntuServer",
+                              "sku": "16.04.0-LTS",
+                              "version": "16.04.201606270"
+                          }
+                      },
+                      "networkProfile": {
+                          "networkInterfaceConfigurations": [
+                              {
+                                  "name": "agentPrivateNodeNic",
+                                  "properties": {
+                                      "primary": true,
+                                      "ipConfigurations": [
+                                          {
+                                              "name": "nicipconfig",
+                                              "properties": {
+                                                  "subnet": {
+                                                      "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_dcos_vnet_FC56B3E8_name')), '/subnets/dcos-agentPrivateSubnet')]"
+                                                  }
+                                              }
+                                          }
+                                      ]
+                                  }
+                              }
+                          ]
+                      },
+                      "extensionProfile": {
+                          "extensions": [
+                              {
+                                  "properties": {
+                                      "publisher": "Microsoft.OSTCExtensions",
+                                      "type": "LinuxDiagnostic",
+                                      "typeHandlerVersion": "2.3",
+                                      "autoUpgradeMinorVersion": true,
+                                      "settings": {
+                                          "StorageAccount": "",
+                                          "xmlCfg": "PFdhZENmZz48RGlhZ25vc3RpY01vbml0b3JDb25maWd1cmF0aW9uPjxNZXRyaWNzIHJlc291cmNlSWQ9ImRjb3MtYWdlbnQtcHJpdmF0ZS1GQzU2QjNFOCI+PE1ldHJpY0FnZ3JlZ2F0aW9uIHNjaGVkdWxlZFRyYW5zZmVyUGVyaW9kPSJQVDFIIi8+PE1ldHJpY0FnZ3JlZ2F0aW9uIHNjaGVkdWxlZFRyYW5zZmVyUGVyaW9kPSJQVDFNIi8+PC9NZXRyaWNzPjwvRGlhZ25vc3RpY01vbml0b3JDb25maWd1cmF0aW9uPjwvV2FkQ2ZnPg=="
+                                      }
+                                  },
+                                  "name": "LinuxDiagnostic"
+                              }
+                          ]
+                      }
+                  }
+              },
+              "resources": [],
+              "dependsOn": [
+                  "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_dcos_vnet_FC56B3E8_name'))]"
+              ]
+          },
+          {
+              "type": "Microsoft.Compute/virtualMachineScaleSets",
+              "sku": {
+                  "name": "Standard_A0",
+                  "tier": "Standard",
+                  "capacity": 1
+              },
+              "name": "[parameters('virtualMachineScaleSets_dcos_agent_public_FC56B3E8_vmss0_name')]",
+              "apiVersion": "2015-06-15",
+              "location": "northeurope",
+              "tags": {
+                  "creationSource": "acs-dcos-agent-public-FC56B3E8-vmss0"
+              },
+              "properties": {
+                  "upgradePolicy": {
+                      "mode": "Manual"
+                  },
+                  "virtualMachineProfile": {
+                      "osProfile": {
+                          "computerNamePrefix": "dcos-agent-public-FC56B3E8",
+                          "adminUsername": "adm_demo",
+                          "customData": "I2Nsb3VkLWNvbmZpZwoKeyJib290Y21kIjogWyJiYXNoIC1jIFwiaWYgWyAhIC1mIC92YXIvbGliL3NkYi1ncHQgXTt0aGVuIGVjaG8gRENPUy01ODkwO3BhcnRlZCAtcyAvZGV2L3NkYiBta2xhYmVsIGdwdDt0b3VjaCAvdmFyL2xpYi9zZGItZ3B0O2ZpXCIiXSwgImRpc2tfc2V0dXAiOiB7ImVwaGVtZXJhbDAiOiB7ImxheW91dCI6IFs1MCwgNTBdLCAib3ZlcndyaXRlIjogdHJ1ZSwgInRhYmxlX3R5cGUiOiAiZ3B0In19LCAiZnNfc2V0dXAiOiBbeyJkZXZpY2UiOiAiZXBoZW1lcmFsMC4xIiwgImZpbGVzeXN0ZW0iOiAiZXh0NCIsICJvdmVyd3JpdGUiOiB0cnVlfSwgeyJkZXZpY2UiOiAiZXBoZW1lcmFsMC4yIiwgImZpbGVzeXN0ZW0iOiAiZXh0NCIsICJvdmVyd3JpdGUiOiB0cnVlfV0sICJtb3VudHMiOiBbWyJlcGhlbWVyYWwwLjEiLCAiL3Zhci9saWIvbWVzb3MiXSwgWyJlcGhlbWVyYWwwLjIiLCAiL3Zhci9saWIvZG9ja2VyIl1dLCAicnVuY21kIjogW1sibG4iLCAiLXMiLCAiL2Jpbi9ybSIsICIvdXNyL2Jpbi9ybSJdLCBbImxuIiwgIi1zIiwgIi9iaW4vbWtkaXIiLCAiL3Vzci9iaW4vbWtkaXIiXSwgWyJsbiIsICItcyIsICIvYmluL3RhciIsICIvdXNyL2Jpbi90YXIiXSwgWyJsbiIsICItcyIsICIvYmluL2xuIiwgIi91c3IvYmluL2xuIl0sIFsibG4iLCAiLXMiLCAiL2Jpbi9jcCIsICIvdXNyL2Jpbi9jcCJdLCBbImxuIiwgIi1zIiwgIi9iaW4vc3lzdGVtY3RsIiwgIi91c3IvYmluL3N5c3RlbWN0bCJdLCBbImxuIiwgIi1zIiwgIi9iaW4vbW91bnQiLCAiL3Vzci9iaW4vbW91bnQiXSwgWyJsbiIsICItcyIsICIvYmluL2Jhc2giLCAiL3Vzci9iaW4vYmFzaCJdLCBbImxuIiwgIi1zIiwgIi91c3Ivc2Jpbi91c2VyYWRkIiwgIi91c3IvYmluL3VzZXJhZGQiXSwgWyJzeXN0ZW1jdGwiLCAiZGlzYWJsZSIsICItLW5vdyIsICJyZXNvbHZjb25mLnNlcnZpY2UiXSwgWyJzeXN0ZW1jdGwiLCAibWFzayIsICItLW5vdyIsICJseGMtbmV0LnNlcnZpY2UiXSwgIm1rZGlyIC92YXIvbGliL21lc29zL2Rjb3MiLCAiY3VybCAtZkxzU3YgLS1yZXRyeSAyMCAtWSAxMDAwMDAgLXkgNjAgLW8gL3Zhci9saWIvbWVzb3MvZGNvcy8xLmRlYiBodHRwczovL2F6ODM3MjAzLnZvLm1zZWNuZC5uZXQvZGNvcy1kZXBzL2xpYmlwc2V0M182LjI5LTFfYW1kNjQuZGViIiwgImN1cmwgLWZMc1N2IC0tcmV0cnkgMjAgLVkgMTAwMDAwIC15IDYwIC1vIC92YXIvbGliL21lc29zL2Rjb3MvMi5kZWIgaHR0cHM6Ly9hejgzNzIwMy52by5tc2VjbmQubmV0L2Rjb3MtZGVwcy9pcHNldF82LjI5LTFfYW1kNjQuZGViIiwgImN1cmwgLWZMc1N2IC0tcmV0cnkgMjAgLVkgMTAwMDAwIC15IDYwIC1vIC92YXIvbGliL21lc29zL2Rjb3MvMy5kZWIgaHR0cHM6Ly9hejgzNzIwMy52by5tc2VjbmQubmV0L2Rjb3MtZGVwcy91bnppcF82LjAtMjB1YnVudHUxX2FtZDY0LmRlYiIsICJjdXJsIC1mTHNTdiAtLXJldHJ5IDIwIC1ZIDEwMDAwMCAteSA2MCAtbyAvdmFyL2xpYi9tZXNvcy9kY29zLzQuZGViIGh0dHBzOi8vYXo4MzcyMDMudm8ubXNlY25kLm5ldC9kY29zLWRlcHMvbGlibHRkbDdfMi40LjYtMC4xX2FtZDY0LmRlYiIsICJiYXNoIC1jIFwidHJ5PTE7dW50aWwgZHBrZyAtaSAvdmFyL2xpYi9tZXNvcy9kY29zL3sxLDIsMyw0fS5kZWIgfHwgKCh0cnk+OSkpO2RvIGVjaG8gcmV0cnkgXFwkKCh0cnkrKykpO3NsZWVwIFxcJCgodHJ5KnRyeSkpO2RvbmVcIiIsIFsiY3AiLCAiLXAiLCAiL2V0Yy9yZXNvbHYuY29uZiIsICIvdG1wL3Jlc29sdi5jb25mIl0sIFsicm0iLCAiLWYiLCAiL2V0Yy9yZXNvbHYuY29uZiJdLCBbImNwIiwgIi1wIiwgIi90bXAvcmVzb2x2LmNvbmYiLCAiL2V0Yy9yZXNvbHYuY29uZiJdLCBbInN5c3RlbWN0bCIsICJzdGFydCIsICJkY29zLWRvY2tlci1pbnN0YWxsLnNlcnZpY2UiXSwgWyJzeXN0ZW1jdGwiLCAic3RhcnQiLCAiZGNvcy1jb25maWctd3JpdGVyLnNlcnZpY2UiXSwgWyJzeXN0ZW1jdGwiLCAicmVzdGFydCIsICJzeXN0ZW1kLWpvdXJuYWxkLnNlcnZpY2UiXSwgWyJzeXN0ZW1jdGwiLCAicmVzdGFydCIsICJkb2NrZXIuc2VydmljZSJdLCBbInN5c3RlbWN0bCIsICJzdGFydCIsICJkY29zLWxpbmstZW52LnNlcnZpY2UiXSwgWyJzeXN0ZW1jdGwiLCAiZW5hYmxlIiwgImRjb3Mtc2V0dXAuc2VydmljZSJdLCBbInN5c3RlbWN0bCIsICItLW5vLWJsb2NrIiwgInN0YXJ0IiwgImRjb3Mtc2V0dXAuc2VydmljZSJdXSwgIndyaXRlX2ZpbGVzIjogW3siY29udGVudCI6ICJodHRwczovL2Rjb3Npby5henVyZWVkZ2UubmV0L2Rjb3Mvc3RhYmxlXG4iLCAib3duZXIiOiAicm9vdCIsICJwYXRoIjogIi9ldGMvbWVzb3NwaGVyZS9zZXR1cC1mbGFncy9yZXBvc2l0b3J5LXVybCIsICJwZXJtaXNzaW9ucyI6ICIwNjQ0In0sIHsiY29udGVudCI6ICJCT09UU1RSQVBfSUQ9ZTczYmEyYjFjZDE3Nzk1ZTRkY2IzZDY2NDdkMTFhMjliOWMzNTA4NFxuIiwgIm93bmVyIjogInJvb3QiLCAicGF0aCI6ICIvZXRjL21lc29zcGhlcmUvc2V0dXAtZmxhZ3MvYm9vdHN0cmFwLWlkIiwgInBlcm1pc3Npb25zIjogIjA2NDQifSwgeyJjb250ZW50IjogIltcImRjb3MtY29uZmlnLS1zZXR1cF81NTY5NzgwNDFiNmVkMDU5Y2MwZjQ3NDUwMTA4M2UzNWVhNTY0NWI4XCIsIFwiZGNvcy1tZXRhZGF0YS0tc2V0dXBfNTU2OTc4MDQxYjZlZDA1OWNjMGY0NzQ1MDEwODNlMzVlYTU2NDViOFwiXVxuIiwgIm93bmVyIjogInJvb3QiLCAicGF0aCI6ICIvZXRjL21lc29zcGhlcmUvc2V0dXAtZmxhZ3MvY2x1c3Rlci1wYWNrYWdlcy5qc29uIiwgInBlcm1pc3Npb25zIjogIjA2NDQifSwgeyJjb250ZW50IjogIltKb3VybmFsXVxuTWF4TGV2ZWxDb25zb2xlPXdhcm5pbmdcblJhdGVMaW1pdEludGVydmFsPTFzXG5SYXRlTGltaXRCdXJzdD0yMDAwMFxuIiwgIm93bmVyIjogInJvb3QiLCAicGF0aCI6ICIvZXRjL3N5c3RlbWQvam91cm5hbGQuY29uZi5kL2Rjb3MuY29uZiIsICJwZXJtaXNzaW9ucyI6ICIwNjQ0In0sIHsiY29udGVudCI6ICJyZXhyYXk6XG4gIGxvZ2xldmVsOiBpbmZvXG4gIG1vZHVsZXM6XG4gICAgZGVmYXVsdC1hZG1pbjpcbiAgICAgIGhvc3Q6IHRjcDovLzEyNy4wLjAuMTo2MTAwM1xuICAgIGRlZmF1bHQtZG9ja2VyOlxuICAgICAgZGlzYWJsZWQ6IHRydWVcbiIsICJwYXRoIjogIi9ldGMvcmV4cmF5L2NvbmZpZy55bWwiLCAicGVybWlzc2lvbnMiOiAiMDY0NCJ9LCB7ImNvbnRlbnQiOiAiW1VuaXRdXG5BZnRlcj1uZXR3b3JrLW9ubGluZS50YXJnZXRcbldhbnRzPW5ldHdvcmstb25saW5lLnRhcmdldFxuW1NlcnZpY2VdXG5UeXBlPW9uZXNob3RcbkVudmlyb25tZW50PURFQklBTl9GUk9OVEVORD1ub25pbnRlcmFjdGl2ZVxuU3RhbmRhcmRPdXRwdXQ9am91cm5hbCtjb25zb2xlXG5TdGFuZGFyZEVycm9yPWpvdXJuYWwrY29uc29sZVxuRXhlY1N0YXJ0UHJlPS91c3IvYmluL2N1cmwgLWZMc1N2IC0tcmV0cnkgMjAgLVkgMTAwMDAwIC15IDYwIC1vIC92YXIvbGliL21lc29zL2Rjb3MvZC5kZWIgaHR0cHM6Ly9hejgzNzIwMy52by5tc2VjbmQubmV0L2Rjb3MtZGVwcy9kb2NrZXItZW5naW5lXzEuMTEuMi0wfnhlbmlhbF9hbWQ2NC5kZWJcbkV4ZWNTdGFydD0vdXNyL2Jpbi9iYXNoIC1jIFwidHJ5PTE7dW50aWwgZHBrZyAtRDMgLWkgL3Zhci9saWIvbWVzb3MvZGNvcy9kLmRlYiB8fCAoKHRyeT45KSk7ZG8gZWNobyByZXRyeSAkKCh0cnkrKykpO3NsZWVwICQoKHRyeSp0cnkpKTtkb25lO3N5c3RlbWN0bCAtLW5vdyBzdGFydCBkb2NrZXI7c3lzdGVtY3RsIHJlc3RhcnQgZG9ja2VyLnNvY2tldFwiXG4iLCAicGF0aCI6ICIvZXRjL3N5c3RlbWQvc3lzdGVtL2Rjb3MtZG9ja2VyLWluc3RhbGwuc2VydmljZSIsICJwZXJtaXNzaW9ucyI6ICIwNjQ0In0sIHsiY29udGVudCI6ICJbU2VydmljZV1cblJlc3RhcnQ9YWx3YXlzXG5TdGFydExpbWl0SW50ZXJ2YWw9MFxuUmVzdGFydFNlYz0xNVxuRXhlY1N0YXJ0UHJlPS0vc2Jpbi9pcCBsaW5rIGRlbCBkb2NrZXIwXG5FeGVjU3RhcnQ9XG5FeGVjU3RhcnQ9L3Vzci9iaW4vZG9ja2VyIGRhZW1vbiAtSCBmZDovLyAtLXN0b3JhZ2UtZHJpdmVyPW92ZXJsYXlcbiIsICJwYXRoIjogIi9ldGMvc3lzdGVtZC9zeXN0ZW0vZG9ja2VyLnNlcnZpY2UuZC9leGVjc3RhcnQuY29uZiIsICJwZXJtaXNzaW9ucyI6ICIwNjQ0In0sIHsiY29udGVudCI6ICJbVW5pdF1cblBhcnRPZj1kb2NrZXIuc2VydmljZVxuW1NvY2tldF1cbkxpc3RlblN0cmVhbT0vdmFyL3J1bi9kb2NrZXIuc29ja1xuU29ja2V0TW9kZT0wNjYwXG5Tb2NrZXRVc2VyPXJvb3RcblNvY2tldEdyb3VwPWRvY2tlclxuTGlzdGVuU3RyZWFtPTIzNzVcbkJpbmRJUHY2T25seT1ib3RoXG5bSW5zdGFsbF1cbldhbnRlZEJ5PXNvY2tldHMudGFyZ2V0XG4iLCAicGF0aCI6ICIvZXRjL3N5c3RlbWQvc3lzdGVtL2RvY2tlci5zb2NrZXQiLCAicGVybWlzc2lvbnMiOiAiMDY0NCJ9LCB7ImNvbnRlbnQiOiAiW1VuaXRdXG5SZXF1aXJlcz1kY29zLXNldHVwLnNlcnZpY2VcbkFmdGVyPWRjb3Mtc2V0dXAuc2VydmljZVxuW1NlcnZpY2VdXG5UeXBlPW9uZXNob3RcbkVudmlyb25tZW50RmlsZT0vZXRjL2Vudmlyb25tZW50XG5FbnZpcm9ubWVudEZpbGU9L29wdC9tZXNvc3BoZXJlL2Vudmlyb25tZW50XG5FeGVjU3RhcnQ9L3Vzci9iaW4vYmFzaCAtYyBcImVjaG8gJChkZXRlY3RfaXApICQoaG9zdG5hbWUpID4gL2V0Yy9ob3N0c1wiXG4iLCAicGF0aCI6ICIvZXRjL3N5c3RlbWQvc3lzdGVtL2Rjb3MtY29uZmlnLXdyaXRlci5zZXJ2aWNlIiwgInBlcm1pc3Npb25zIjogIjA2NDQifSwgeyJjb250ZW50IjogIk1FU09TX0NMVVNURVI9ZGNvcy1tYXN0ZXItaXAtbGJubGFibWdtdC1GQzU2QjNFOFxuIiwgInBhdGgiOiAiL2V0Yy9tZXNvc3BoZXJlL3NldHVwLXBhY2thZ2VzL2Rjb3MtcHJvdmlkZXItYXp1cmUtLXNldHVwL2V0Yy9tZXNvcy1tYXN0ZXItcHJvdmlkZXIifSwgeyJjb250ZW50IjogIkFETUlOUk9VVEVSX0FDVElWQVRFX0FVVEhfTU9EVUxFPWZhbHNlXG4iLCAicGF0aCI6ICIvZXRjL21lc29zcGhlcmUvc2V0dXAtcGFja2FnZXMvZGNvcy1wcm92aWRlci1henVyZS0tc2V0dXAvZXRjL2FkbWlucm91dGVyLmVudiJ9LCB7ImNvbnRlbnQiOiAiW1wiMTcyLjE2LjAuNVwiXVxuIiwgInBhdGgiOiAiL2V0Yy9tZXNvc3BoZXJlL3NldHVwLXBhY2thZ2VzL2Rjb3MtcHJvdmlkZXItYXp1cmUtLXNldHVwL2V0Yy9tYXN0ZXJfbGlzdCJ9LCB7ImNvbnRlbnQiOiAiRVhISUJJVE9SX0JBQ0tFTkQ9QVpVUkVcbkFaVVJFX0NPTlRBSU5FUj1kY29zLWV4aGliaXRvclxuQVpVUkVfUFJFRklYPWRjb3MtbWFzdGVyLWlwLWxibmxhYm1nbXQtRkM1NkIzRThcbiIsICJwYXRoIjogIi9ldGMvbWVzb3NwaGVyZS9zZXR1cC1wYWNrYWdlcy9kY29zLXByb3ZpZGVyLWF6dXJlLS1zZXR1cC9ldGMvZXhoaWJpdG9yIn0sIHsiY29udGVudCI6ICJjb20ubmV0ZmxpeC5leGhpYml0b3IuYXp1cmUuYWNjb3VudC1uYW1lPXdkYmlpb3lxNXF4djRtc3RyMFxuY29tLm5ldGZsaXguZXhoaWJpdG9yLmF6dXJlLmFjY291bnQta2V5PU9Ydmh2bEpwcGlRQmhldkt1eXd4K29wYU9NbjIzVDBHczRqaEd2UHdYWkMzTkRNZlZxMTk1eWJuMlAyNzFCSTVHc3JYS0xxL1ExV3RubEdBZ1dScW9RPT1cbiIsICJwYXRoIjogIi9ldGMvbWVzb3NwaGVyZS9zZXR1cC1wYWNrYWdlcy9kY29zLXByb3ZpZGVyLWF6dXJlLS1zZXR1cC9ldGMvZXhoaWJpdG9yLnByb3BlcnRpZXMifSwgeyJjb250ZW50IjogIntcInVpQ29uZmlndXJhdGlvblwiOntcInBsdWdpbnNcIjp7XCJiYW5uZXJcIjp7XCJlbmFibGVkXCI6ZmFsc2UsXCJiYWNrZ3JvdW5kQ29sb3JcIjpcIiMxRTIzMkZcIixcImZvcmVncm91bmRDb2xvclwiOlwiI0ZGRkZGRlwiLFwiaGVhZGVyVGl0bGVcIjpudWxsLFwiaGVhZGVyQ29udGVudFwiOm51bGwsXCJmb290ZXJDb250ZW50XCI6bnVsbCxcImltYWdlUGF0aFwiOm51bGwsXCJkaXNtaXNzaWJsZVwiOm51bGx9LFwiYnJhbmRpbmdcIjp7XCJlbmFibGVkXCI6ZmFsc2V9LFwiZXh0ZXJuYWwtbGlua3NcIjoge1wiZW5hYmxlZFwiOiBmYWxzZX0sXG5cblwiYXV0aGVudGljYXRpb25cIjp7XCJlbmFibGVkXCI6ZmFsc2V9LFxuXG5cIm9hdXRoXCI6e1wiZW5hYmxlZFwiOmZhbHNlLFwiYXV0aEhvc3RcIjpcImh0dHBzOi8vZGNvcy5hdXRoMC5jb21cIn0sXG5cblxuXCJ0cmFja2luZ1wiOntcImVuYWJsZWRcIjpmYWxzZX19fX1cbiIsICJwYXRoIjogIi9ldGMvbWVzb3NwaGVyZS9zZXR1cC1wYWNrYWdlcy9kY29zLXByb3ZpZGVyLWF6dXJlLS1zZXR1cC9ldGMvdWktY29uZmlnLmpzb24ifSwgeyJjb250ZW50IjogInt9IiwgInBhdGgiOiAiL2V0Yy9tZXNvc3BoZXJlL3NldHVwLXBhY2thZ2VzL2Rjb3MtcHJvdmlkZXItYXp1cmUtLXNldHVwL3BrZ2luZm8uanNvbiJ9LCB7ImNvbnRlbnQiOiAiW1VuaXRdXG5CZWZvcmU9ZGNvcy50YXJnZXRcbltTZXJ2aWNlXVxuVHlwZT1vbmVzaG90XG5TdGFuZGFyZE91dHB1dD1qb3VybmFsK2NvbnNvbGVcblN0YW5kYXJkRXJyb3I9am91cm5hbCtjb25zb2xlXG5FeGVjU3RhcnRQcmU9L3Vzci9iaW4vbWtkaXIgLXAgL2V0Yy9wcm9maWxlLmRcbkV4ZWNTdGFydD0vdXNyL2Jpbi9sbiAtc2YgL29wdC9tZXNvc3BoZXJlL2Vudmlyb25tZW50LmV4cG9ydCAvZXRjL3Byb2ZpbGUuZC9kY29zLnNoXG4iLCAicGF0aCI6ICIvZXRjL3N5c3RlbWQvc3lzdGVtL2Rjb3MtbGluay1lbnYuc2VydmljZSIsICJwZXJtaXNzaW9ucyI6ICIwNjQ0In0sIHsiY29udGVudCI6ICJbVW5pdF1cbkRlc2NyaXB0aW9uPVBrZ3BhbmRhOiBEb3dubG9hZCBEQy9PUyB0byB0aGlzIGhvc3QuXG5BZnRlcj1uZXR3b3JrLW9ubGluZS50YXJnZXRcbldhbnRzPW5ldHdvcmstb25saW5lLnRhcmdldFxuQ29uZGl0aW9uUGF0aEV4aXN0cz0hL29wdC9tZXNvc3BoZXJlL1xuW1NlcnZpY2VdXG5FbnZpcm9ubWVudEZpbGU9L2V0Yy9tZXNvc3BoZXJlL3NldHVwLWZsYWdzL2Jvb3RzdHJhcC1pZFxuVHlwZT1vbmVzaG90XG5TdGFuZGFyZE91dHB1dD1qb3VybmFsK2NvbnNvbGVcblN0YW5kYXJkRXJyb3I9am91cm5hbCtjb25zb2xlXG5FeGVjU3RhcnRQcmU9L3Vzci9iaW4vY3VybCAtLWtlZXBhbGl2ZS10aW1lIDIgLWZMc1N2IC0tcmV0cnkgMjAgLVkgMTAwMDAwIC15IDYwIC1vIC92YXIvbGliL21lc29zL2Rjb3MvYm9vdHN0cmFwLnRhci54eiBodHRwczovL2Rjb3Npby5henVyZWVkZ2UubmV0L2Rjb3Mvc3RhYmxlL2Jvb3RzdHJhcC8ke0JPT1RTVFJBUF9JRH0uYm9vdHN0cmFwLnRhci54elxuRXhlY1N0YXJ0UHJlPS91c3IvYmluL21rZGlyIC1wIC9vcHQvbWVzb3NwaGVyZVxuRXhlY1N0YXJ0PS91c3IvYmluL3RhciAtYXhmIC92YXIvbGliL21lc29zL2Rjb3MvYm9vdHN0cmFwLnRhci54eiAtQyAvb3B0L21lc29zcGhlcmVcbkV4ZWNTdGFydFBvc3Q9LS91c3IvYmluL3JtIC1mIC92YXIvbGliL21lc29zL2Rjb3MvYm9vdHN0cmFwLnRhci54elxuIiwgInBhdGgiOiAiL2V0Yy9zeXN0ZW1kL3N5c3RlbS9kY29zLWRvd25sb2FkLnNlcnZpY2UiLCAicGVybWlzc2lvbnMiOiAiMDY0NCJ9LCB7ImNvbnRlbnQiOiAiW1VuaXRdXG5EZXNjcmlwdGlvbj1Qa2dwYW5kYTogU3BlY2lhbGl6ZSBEQy9PUyBmb3IgdGhpcyBob3N0LlxuUmVxdWlyZXM9ZGNvcy1kb3dubG9hZC5zZXJ2aWNlXG5BZnRlcj1kY29zLWRvd25sb2FkLnNlcnZpY2VcbltTZXJ2aWNlXVxuVHlwZT1vbmVzaG90XG5TdGFuZGFyZE91dHB1dD1qb3VybmFsK2NvbnNvbGVcblN0YW5kYXJkRXJyb3I9am91cm5hbCtjb25zb2xlXG5FbnZpcm9ubWVudEZpbGU9L29wdC9tZXNvc3BoZXJlL2Vudmlyb25tZW50XG5FeGVjU3RhcnQ9L29wdC9tZXNvc3BoZXJlL2Jpbi9wa2dwYW5kYSBzZXR1cCAtLW5vLWJsb2NrLXN5c3RlbWRcbltJbnN0YWxsXVxuV2FudGVkQnk9bXVsdGktdXNlci50YXJnZXRcbiIsICJwYXRoIjogIi9ldGMvc3lzdGVtZC9zeXN0ZW0vZGNvcy1zZXR1cC5zZXJ2aWNlIiwgInBlcm1pc3Npb25zIjogIjA2NDQifSwgeyJjb250ZW50IjogIiIsICJwYXRoIjogIi9ldGMvbWVzb3NwaGVyZS9yb2xlcy9zbGF2ZV9wdWJsaWMifSwgeyJjb250ZW50IjogIiIsICJwYXRoIjogIi9ldGMvbWVzb3NwaGVyZS9yb2xlcy9henVyZSJ9XX0=",
+                          "linuxConfiguration": {
+                              "disablePasswordAuthentication": true,
+                              "ssh": {
+                                  "publicKeys": [
+                                      {
+                                          "path": "/home/adm_demo/.ssh/authorized_keys",
+                                          "keyData": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDgrUqoAoc3WXfF4knQ1WF/ZJn3QFbuGzp4Q5RZXCpG2HAYbTcDrvBWpkfsN0AIJUMEptpuZ4zInDmUJE0cVzBEPXFlTjMCYHWx4c/Z/DBswVjnDKfKxBmLpAPz2YIVf3SSxJNxEm80ktDBC8gM+/sMuZOP/ruBTIV1aA22tVFqrXBXKWwP6bzFZyBXJHzDpp9QNJjC2hs8S0VQ8xtgsGW8h1eDsEFowe9x/qpB90NG6Ugpfa0MD/grRRy8Bf9l4bjEE60XAyzgGhZoFHnXn31615sPphWbRU8GYLAXyN4YWv9k+PjC/BLHc8zxi87NCrmhvdN88MffH3ykCIDKJ9BB"
+                                      }
+                                  ]
+                              }
+                          },
+                          "secrets": [],
+                          "adminPassword": "[parameters('virtualMachineScaleSets_dcos_agent_public_FC56B3E8_vmss0_adminPassword')]"
+                      },
+                      "storageProfile": {
+                          "osDisk": {
+                              "vhdContainers": [
+                                  "https://wdbiioyq5qxv4agntpub.blob.core.windows.net/osdisk"
+                              ],
+                              "name": "vmssosdisk",
+                              "createOption": "FromImage",
+                              "caching": "ReadOnly"
+                          },
+                          "imageReference": {
+                              "publisher": "Canonical",
+                              "offer": "UbuntuServer",
+                              "sku": "16.04.0-LTS",
+                              "version": "16.04.201606270"
+                          }
+                      },
+                      "networkProfile": {
+                          "networkInterfaceConfigurations": [
+                              {
+                                  "name": "agentNodeNic",
+                                  "properties": {
+                                      "primary": true,
+                                      "ipConfigurations": [
+                                          {
+                                              "name": "nicipconfig",
+                                              "properties": {
+                                                  "subnet": {
+                                                      "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_dcos_vnet_FC56B3E8_name')), '/subnets/dcos-agentPublicSubnet')]"
+                                                  },
+                                                  "loadBalancerBackendAddressPools": [
+                                                      {
+                                                          "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_dcos_agent_lb_FC56B3E8_name')), '/backendAddressPools/dcos-agent-pool-FC56B3E8')]"
+                                                      }
+                                                  ]
+                                              }
+                                          }
+                                      ]
+                                  }
+                              }
+                          ]
+                      },
+                      "extensionProfile": {
+                          "extensions": [
+                              {
+                                  "properties": {
+                                      "publisher": "Microsoft.OSTCExtensions",
+                                      "type": "LinuxDiagnostic",
+                                      "typeHandlerVersion": "2.3",
+                                      "autoUpgradeMinorVersion": true,
+                                      "settings": {
+                                          "StorageAccount": "",
+                                          "xmlCfg": "PFdhZENmZz48RGlhZ25vc3RpY01vbml0b3JDb25maWd1cmF0aW9uPjxNZXRyaWNzIHJlc291cmNlSWQ9ImRjb3MtYWdlbnQtcHVibGljLUZDNTZCM0U4Ij48TWV0cmljQWdncmVnYXRpb24gc2NoZWR1bGVkVHJhbnNmZXJQZXJpb2Q9IlBUMUgiLz48TWV0cmljQWdncmVnYXRpb24gc2NoZWR1bGVkVHJhbnNmZXJQZXJpb2Q9IlBUMU0iLz48L01ldHJpY3M+PC9EaWFnbm9zdGljTW9uaXRvckNvbmZpZ3VyYXRpb24+PC9XYWRDZmc+"
+                                      }
+                                  },
+                                  "name": "LinuxDiagnostic"
+                              }
+                          ]
+                      }
+                  }
+              },
+              "resources": [],
+              "dependsOn": [
+                  "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_dcos_vnet_FC56B3E8_name'))]",
+                  "[resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_dcos_agent_lb_FC56B3E8_name'))]"
+              ]
+          },
+          {
+              "type": "Microsoft.ContainerService/containerServices",
+              "name": "[parameters('containerServices_containerservice_demo_lbn_name')]",
+              "apiVersion": "2016-03-30",
+              "location": "northeurope",
+              "properties": {
+                  "orchestratorProfile": {
+                      "orchestratorType": "DCOS"
+                  },
+                  "masterProfile": {
+                      "count": 1,
+                      "dnsPrefix": "lbnlabmgmt"
+                  },
+                  "agentPoolProfiles": [
+                      {
+                          "name": "agentpools",
+                          "count": 2,
+                          "vmSize": "Standard_A0",
+                          "dnsPrefix": "lbnlabagents"
+                      }
+                  ],
+                  "linuxProfile": {
+                      "ssh": {
+                          "publicKeys": [
+                              {
+                                  "keyData": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDgrUqoAoc3WXfF4knQ1WF/ZJn3QFbuGzp4Q5RZXCpG2HAYbTcDrvBWpkfsN0AIJUMEptpuZ4zInDmUJE0cVzBEPXFlTjMCYHWx4c/Z/DBswVjnDKfKxBmLpAPz2YIVf3SSxJNxEm80ktDBC8gM+/sMuZOP/ruBTIV1aA22tVFqrXBXKWwP6bzFZyBXJHzDpp9QNJjC2hs8S0VQ8xtgsGW8h1eDsEFowe9x/qpB90NG6Ugpfa0MD/grRRy8Bf9l4bjEE60XAyzgGhZoFHnXn31615sPphWbRU8GYLAXyN4YWv9k+PjC/BLHc8zxi87NCrmhvdN88MffH3ykCIDKJ9BB"
+                              }
+                          ]
+                      },
+                      "adminUsername": "adm_demo"
+                  }
+              },
+              "resources": [],
+              "dependsOn": []
+          },
+          {
+              "type": "Microsoft.Network/loadBalancers",
+              "name": "[parameters('loadBalancers_dcos_agent_lb_FC56B3E8_name')]",
+              "apiVersion": "2016-03-30",
+              "location": "northeurope",
+              "properties": {
+                  "frontendIPConfigurations": [
+                      {
+                          "name": "dcos-agent-lbFrontEnd-FC56B3E8",
+                          "properties": {
+                              "privateIPAllocationMethod": "Dynamic",
+                              "publicIPAddress": {
+                                  "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_dcos_agent_ip_lbnlabagents_FC56B3E8_name'))]"
+                              }
+                          }
+                      }
+                  ],
+                  "backendAddressPools": [
+                      {
+                          "name": "dcos-agent-pool-FC56B3E8"
+                      }
+                  ],
+                  "loadBalancingRules": [
+                      {
+                          "name": "LBRuleHTTP",
+                          "properties": {
+                              "frontendIPConfiguration": {
+                                  "id": "[parameters('loadBalancers_dcos_agent_lb_FC56B3E8_id')]"
+                              },
+                              "frontendPort": 80,
+                              "backendPort": 80,
+                              "enableFloatingIP": false,
+                              "idleTimeoutInMinutes": 5,
+                              "protocol": "Tcp",
+                              "loadDistribution": "Default",
+                              "backendAddressPool": {
+                                  "id": "[parameters('loadBalancers_dcos_agent_lb_FC56B3E8_id_1')]"
+                              },
+                              "probe": {
+                                  "id": "[parameters('loadBalancers_dcos_agent_lb_FC56B3E8_id_2')]"
+                              }
+                          }
+                      },
+                      {
+                          "name": "LBRuleHTTPS",
+                          "properties": {
+                              "frontendIPConfiguration": {
+                                  "id": "[parameters('loadBalancers_dcos_agent_lb_FC56B3E8_id_3')]"
+                              },
+                              "frontendPort": 443,
+                              "backendPort": 443,
+                              "enableFloatingIP": false,
+                              "idleTimeoutInMinutes": 5,
+                              "protocol": "Tcp",
+                              "loadDistribution": "Default",
+                              "backendAddressPool": {
+                                  "id": "[parameters('loadBalancers_dcos_agent_lb_FC56B3E8_id_4')]"
+                              },
+                              "probe": {
+                                  "id": "[parameters('loadBalancers_dcos_agent_lb_FC56B3E8_id_5')]"
+                              }
+                          }
+                      },
+                      {
+                          "name": "LBRulePort8080",
+                          "properties": {
+                              "frontendIPConfiguration": {
+                                  "id": "[parameters('loadBalancers_dcos_agent_lb_FC56B3E8_id_6')]"
+                              },
+                              "frontendPort": 8080,
+                              "backendPort": 8080,
+                              "enableFloatingIP": false,
+                              "idleTimeoutInMinutes": 5,
+                              "protocol": "Tcp",
+                              "loadDistribution": "Default",
+                              "backendAddressPool": {
+                                  "id": "[parameters('loadBalancers_dcos_agent_lb_FC56B3E8_id_7')]"
+                              },
+                              "probe": {
+                                  "id": "[parameters('loadBalancers_dcos_agent_lb_FC56B3E8_id_8')]"
+                              }
+                          }
+                      }
+                  ],
+                  "probes": [
+                      {
+                          "name": "tcpHTTPProbe",
+                          "properties": {
+                              "protocol": "Tcp",
+                              "port": 80,
+                              "intervalInSeconds": 5,
+                              "numberOfProbes": 2
+                          }
+                      },
+                      {
+                          "name": "tcpHTTPSProbe",
+                          "properties": {
+                              "protocol": "Tcp",
+                              "port": 443,
+                              "intervalInSeconds": 5,
+                              "numberOfProbes": 2
+                          }
+                      },
+                      {
+                          "name": "tcpPort8080Probe",
+                          "properties": {
+                              "protocol": "Tcp",
+                              "port": 8080,
+                              "intervalInSeconds": 5,
+                              "numberOfProbes": 2
+                          }
+                      }
+                  ],
+                  "inboundNatRules": [],
+                  "outboundNatRules": [],
+                  "inboundNatPools": []
+              },
+              "resources": [],
+              "dependsOn": [
+                  "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_dcos_agent_ip_lbnlabagents_FC56B3E8_name'))]"
+              ]
+          },
+          {
+              "type": "Microsoft.Network/loadBalancers",
+              "name": "[parameters('loadBalancers_dcos_master_lb_FC56B3E8_name')]",
+              "apiVersion": "2016-03-30",
+              "location": "northeurope",
+              "properties": {
+                  "frontendIPConfigurations": [
+                      {
+                          "name": "dcos-master-lbFrontEnd-FC56B3E8",
+                          "properties": {
+                              "privateIPAllocationMethod": "Dynamic",
+                              "publicIPAddress": {
+                                  "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_dcos_master_ip_lbnlabmgmt_FC56B3E8_name'))]"
+                              }
+                          }
+                      }
+                  ],
+                  "backendAddressPools": [
+                      {
+                          "name": "dcos-master-pool-FC56B3E8"
+                      }
+                  ],
+                  "loadBalancingRules": [],
+                  "probes": [],
+                  "inboundNatRules": [
+                      {
+                          "name": "SSHPort22-dcos-master-FC56B3E8-0",
+                          "properties": {
+                              "frontendIPConfiguration": {
+                                  "id": "[parameters('loadBalancers_dcos_master_lb_FC56B3E8_id')]"
+                              },
+                              "frontendPort": 22,
+                              "backendPort": 2222,
+                              "protocol": "Tcp"
+                          }
+                      },
+                      {
+                          "name": "SSH-dcos-master-FC56B3E8-0",
+                          "properties": {
+                              "frontendIPConfiguration": {
+                                  "id": "[parameters('loadBalancers_dcos_master_lb_FC56B3E8_id_1')]"
+                              },
+                              "frontendPort": 2200,
+                              "backendPort": 22,
+                              "protocol": "Tcp"
+                          }
+                      }
+                  ],
+                  "outboundNatRules": [],
+                  "inboundNatPools": []
+              },
+              "resources": [],
+              "dependsOn": [
+                  "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_dcos_master_ip_lbnlabmgmt_FC56B3E8_name'))]"
+              ]
+          },
+          {
+              "type": "Microsoft.Network/networkInterfaces",
+              "name": "[parameters('networkInterfaces_dcos_master_FC56B3E8_nic_0_name')]",
+              "apiVersion": "2016-03-30",
+              "location": "northeurope",
+              "properties": {
+                  "ipConfigurations": [
+                      {
+                          "name": "ipConfigNode",
+                          "properties": {
+                              "privateIPAddress": "172.16.0.5",
+                              "privateIPAllocationMethod": "Static",
+                              "subnet": {
+                                  "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_dcos_vnet_FC56B3E8_name')), '/subnets/dcos-masterSubnet')]"
+                              },
+                              "loadBalancerBackendAddressPools": [
+                                  {
+                                      "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_dcos_master_lb_FC56B3E8_name')), '/backendAddressPools/dcos-master-pool-FC56B3E8')]"
+                                  }
+                              ],
+                              "loadBalancerInboundNatRules": [
+                                  {
+                                      "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_dcos_master_lb_FC56B3E8_name')), '/inboundNatRules/SSH-dcos-master-FC56B3E8-0')]"
+                                  },
+                                  {
+                                      "id": "[concat(resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_dcos_master_lb_FC56B3E8_name')), '/inboundNatRules/SSHPort22-dcos-master-FC56B3E8-0')]"
+                                  }
+                              ]
+                          }
+                      }
+                  ],
+                  "dnsSettings": {
+                      "dnsServers": []
+                  },
+                  "enableIPForwarding": false,
+                  "networkSecurityGroup": {
+                      "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_dcos_master_nsg_FC56B3E8_name'))]"
+                  }
+              },
+              "resources": [],
+              "dependsOn": [
+                  "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_dcos_vnet_FC56B3E8_name'))]",
+                  "[resourceId('Microsoft.Network/loadBalancers', parameters('loadBalancers_dcos_master_lb_FC56B3E8_name'))]",
+                  "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_dcos_master_nsg_FC56B3E8_name'))]"
+              ]
+          },
+          {
+              "type": "Microsoft.Network/networkSecurityGroups",
+              "name": "[parameters('networkSecurityGroups_dcos_agent_private_nsg_FC56B3E8_name')]",
+              "apiVersion": "2016-03-30",
+              "location": "northeurope",
+              "properties": {
+                  "securityRules": []
+              },
+              "resources": [],
+              "dependsOn": []
+          },
+          {
+              "type": "Microsoft.Network/networkSecurityGroups",
+              "name": "[parameters('networkSecurityGroups_dcos_agent_public_nsg_FC56B3E8_name')]",
+              "apiVersion": "2016-03-30",
+              "location": "northeurope",
+              "properties": {
+                  "securityRules": [
+                      {
+                          "name": "Allow_HTTP",
+                          "properties": {
+                              "description": "Allow HTTP traffic from the Internet to Public Agents",
+                              "protocol": "*",
+                              "sourcePortRange": "*",
+                              "destinationPortRange": "80",
+                              "sourceAddressPrefix": "Internet",
+                              "destinationAddressPrefix": "*",
+                              "access": "Allow",
+                              "priority": 200,
+                              "direction": "Inbound"
+                          }
+                      },
+                      {
+                          "name": "Allow_HTTPS",
+                          "properties": {
+                              "description": "Allow HTTPS traffic from the Internet to Public Agents",
+                              "protocol": "*",
+                              "sourcePortRange": "*",
+                              "destinationPortRange": "443",
+                              "sourceAddressPrefix": "Internet",
+                              "destinationAddressPrefix": "*",
+                              "access": "Allow",
+                              "priority": 300,
+                              "direction": "Inbound"
+                          }
+                      },
+                      {
+                          "name": "Allow_8080",
+                          "properties": {
+                              "description": "Allow 8080 traffic from the Internet to Public Agents",
+                              "protocol": "*",
+                              "sourcePortRange": "*",
+                              "destinationPortRange": "8080",
+                              "sourceAddressPrefix": "Internet",
+                              "destinationAddressPrefix": "*",
+                              "access": "Allow",
+                              "priority": 400,
+                              "direction": "Inbound"
+                          }
+                      }
+                  ]
+              },
+              "resources": [],
+              "dependsOn": []
+          },
+          {
+              "type": "Microsoft.Network/networkSecurityGroups",
+              "name": "[parameters('networkSecurityGroups_dcos_master_nsg_FC56B3E8_name')]",
+              "apiVersion": "2016-03-30",
+              "location": "northeurope",
+              "properties": {
+                  "securityRules": [
+                      {
+                          "name": "ssh",
+                          "properties": {
+                              "description": "Allow SSH",
+                              "protocol": "Tcp",
+                              "sourcePortRange": "*",
+                              "destinationPortRange": "22",
+                              "sourceAddressPrefix": "*",
+                              "destinationAddressPrefix": "*",
+                              "access": "Allow",
+                              "priority": 200,
+                              "direction": "Inbound"
+                          }
+                      },
+                      {
+                          "name": "ssh2",
+                          "properties": {
+                              "description": "Allow SSH",
+                              "protocol": "Tcp",
+                              "sourcePortRange": "*",
+                              "destinationPortRange": "2222",
+                              "sourceAddressPrefix": "*",
+                              "destinationAddressPrefix": "*",
+                              "access": "Allow",
+                              "priority": 201,
+                              "direction": "Inbound"
+                          }
+                      }
+                  ]
+              },
+              "resources": [],
+              "dependsOn": []
+          },
+          {
+              "type": "Microsoft.Network/publicIPAddresses",
+              "name": "[parameters('publicIPAddresses_dcos_agent_ip_lbnlabagents_FC56B3E8_name')]",
+              "apiVersion": "2016-03-30",
+              "location": "northeurope",
+              "properties": {
+                  "publicIPAllocationMethod": "Dynamic",
+                  "idleTimeoutInMinutes": 4,
+                  "dnsSettings": {
+                      "domainNameLabel": "lbnlabagents"
+                  }
+              },
+              "resources": [],
+              "dependsOn": []
+          },
+          {
+              "type": "Microsoft.Network/publicIPAddresses",
+              "name": "[parameters('publicIPAddresses_dcos_master_ip_lbnlabmgmt_FC56B3E8_name')]",
+              "apiVersion": "2016-03-30",
+              "location": "northeurope",
+              "properties": {
+                  "publicIPAllocationMethod": "Dynamic",
+                  "idleTimeoutInMinutes": 4,
+                  "dnsSettings": {
+                      "domainNameLabel": "lbnlabmgmt"
+                  }
+              },
+              "resources": [],
+              "dependsOn": []
+          },
+          {
+              "type": "Microsoft.Network/virtualNetworks",
+              "name": "[parameters('virtualNetworks_dcos_vnet_FC56B3E8_name')]",
+              "apiVersion": "2016-03-30",
+              "location": "northeurope",
+              "properties": {
+                  "addressSpace": {
+                      "addressPrefixes": [
+                          "172.16.0.0/24",
+                          "10.0.0.0/8"
+                      ]
+                  },
+                  "subnets": [
+                      {
+                          "name": "dcos-masterSubnet",
+                          "properties": {
+                              "addressPrefix": "172.16.0.0/24"
+                          }
+                      },
+                      {
+                          "name": "dcos-agentPublicSubnet",
+                          "properties": {
+                              "addressPrefix": "10.0.0.0/11",
+                              "networkSecurityGroup": {
+                                  "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_dcos_agent_public_nsg_FC56B3E8_name'))]"
+                              }
+                          }
+                      },
+                      {
+                          "name": "dcos-agentPrivateSubnet",
+                          "properties": {
+                              "addressPrefix": "10.32.0.0/11",
+                              "networkSecurityGroup": {
+                                  "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_dcos_agent_private_nsg_FC56B3E8_name'))]"
+                              }
+                          }
+                      }
+                  ]
+              },
+              "resources": [],
+              "dependsOn": [
+                  "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_dcos_agent_public_nsg_FC56B3E8_name'))]",
+                  "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_dcos_agent_private_nsg_FC56B3E8_name'))]"
+              ]
+          },
+          {
+              "type": "Microsoft.Storage/storageAccounts",
+              "sku": {
+                  "name": "Standard_LRS",
+                  "tier": "Standard"
+              },
+              "kind": "Storage",
+              "name": "[parameters('storageAccounts_00wdbiioyq5qxv4agntpri0_name')]",
+              "apiVersion": "2016-01-01",
+              "location": "northeurope",
+              "tags": {},
+              "properties": {},
+              "resources": [],
+              "dependsOn": []
+          },
+          {
+              "type": "Microsoft.Storage/storageAccounts",
+              "sku": {
+                  "name": "Standard_LRS",
+                  "tier": "Standard"
+              },
+              "kind": "Storage",
+              "name": "[parameters('storageAccounts_60wdbiioyq5qxv4agntpri1_name')]",
+              "apiVersion": "2016-01-01",
+              "location": "northeurope",
+              "tags": {},
+              "properties": {},
+              "resources": [],
+              "dependsOn": []
+          },
+          {
+              "type": "Microsoft.Storage/storageAccounts",
+              "sku": {
+                  "name": "Standard_LRS",
+                  "tier": "Standard"
+              },
+              "kind": "Storage",
+              "name": "[parameters('storageAccounts_c0wdbiioyq5qxv4agntpri2_name')]",
+              "apiVersion": "2016-01-01",
+              "location": "northeurope",
+              "tags": {},
+              "properties": {},
+              "resources": [],
+              "dependsOn": []
+          },
+          {
+              "type": "Microsoft.Storage/storageAccounts",
+              "sku": {
+                  "name": "Standard_LRS",
+                  "tier": "Standard"
+              },
+              "kind": "Storage",
+              "name": "[parameters('storageAccounts_i0wdbiioyq5qxv4agntpri3_name')]",
+              "apiVersion": "2016-01-01",
+              "location": "northeurope",
+              "tags": {},
+              "properties": {},
+              "resources": [],
+              "dependsOn": []
+          },
+          {
+              "type": "Microsoft.Storage/storageAccounts",
+              "sku": {
+                  "name": "Standard_LRS",
+                  "tier": "Standard"
+              },
+              "kind": "Storage",
+              "name": "[parameters('storageAccounts_o0wdbiioyq5qxv4agntpri4_name')]",
+              "apiVersion": "2016-01-01",
+              "location": "northeurope",
+              "tags": {},
+              "properties": {},
+              "resources": [],
+              "dependsOn": []
+          },
+          {
+              "type": "Microsoft.Storage/storageAccounts",
+              "sku": {
+                  "name": "Standard_LRS",
+                  "tier": "Standard"
+              },
+              "kind": "Storage",
+              "name": "[parameters('storageAccounts_wdbiioyq5qxv4agntpub_name')]",
+              "apiVersion": "2016-01-01",
+              "location": "northeurope",
+              "tags": {},
+              "properties": {},
+              "resources": [],
+              "dependsOn": []
+          },
+          {
+              "type": "Microsoft.Storage/storageAccounts",
+              "sku": {
+                  "name": "Standard_LRS",
+                  "tier": "Standard"
+              },
+              "kind": "Storage",
+              "name": "[parameters('storageAccounts_wdbiioyq5qxv4diag0_name')]",
+              "apiVersion": "2016-01-01",
+              "location": "northeurope",
+              "tags": {},
+              "properties": {},
+              "resources": [],
+              "dependsOn": []
+          },
+          {
+              "type": "Microsoft.Storage/storageAccounts",
+              "sku": {
+                  "name": "Standard_LRS",
+                  "tier": "Standard"
+              },
+              "kind": "Storage",
+              "name": "[parameters('storageAccounts_wdbiioyq5qxv4mstr0_name')]",
+              "apiVersion": "2016-01-01",
+              "location": "northeurope",
+              "tags": {},
+              "properties": {},
+              "resources": [],
+              "dependsOn": []
+          },
+          {
+              "type": "Microsoft.Compute/virtualMachines/extensions",
+              "name": "[parameters('extensions_linuxdiagnostic_name')]",
+              "apiVersion": "2016-03-30",
+              "location": "northeurope",
+              "properties": {
+                  "publisher": "Microsoft.OSTCExtensions",
+                  "type": "LinuxDiagnostic",
+                  "typeHandlerVersion": "2.3",
+                  "autoUpgradeMinorVersion": true,
+                  "settings": {
+                      "xmlCfg": "PFdhZENmZz48RGlhZ25vc3RpY01vbml0b3JDb25maWd1cmF0aW9uPjxNZXRyaWNzIHJlc291cmNlSWQ9ImRjb3MtbWFzdGVyLUZDNTZCM0U4LTAiPjxNZXRyaWNBZ2dyZWdhdGlvbiBzY2hlZHVsZWRUcmFuc2ZlclBlcmlvZD0iUFQxSCIvPjxNZXRyaWNBZ2dyZWdhdGlvbiBzY2hlZHVsZWRUcmFuc2ZlclBlcmlvZD0iUFQxTSIvPjwvTWV0cmljcz48L0RpYWdub3N0aWNNb25pdG9yQ29uZmlndXJhdGlvbj48L1dhZENmZz4="
+                  },
+                  "protectedSettings": "[parameters('extensions_linuxdiagnostic_protectedSettings')]"
+              },
+              "resources": [],
+              "dependsOn": [
+                  "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_dcos_master_FC56B3E8_0_name'))]"
+              ]
+          },
+          {
+              "type": "Microsoft.Compute/virtualMachines/extensions",
+              "name": "[parameters('extensions_waitforleader_name')]",
+              "apiVersion": "2016-03-30",
+              "location": "northeurope",
+              "properties": {
+                  "publisher": "Microsoft.OSTCExtensions",
+                  "type": "CustomScriptForLinux",
+                  "typeHandlerVersion": "1.4",
+                  "autoUpgradeMinorVersion": true,
+                  "settings": {},
+                  "protectedSettings": "[parameters('extensions_waitforleader_protectedSettings')]"
+              },
+              "resources": [],
+              "dependsOn": [
+                  "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_dcos_master_FC56B3E8_0_name'))]"
+              ]
+          }
+      ]
+  }
