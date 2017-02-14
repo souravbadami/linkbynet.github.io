@@ -20,4 +20,20 @@ volume over time :
 .es(index="bitstamp*",timefield="timestamp",metric="avg:volume").fit(carry).yaxis(2)
 {% endhighlight %}
 
-The first line describes the 
+Let's go through the first line :
+
+1. `.es()` : We use the datasource Elasticsearch (`.es`) and pull the data from the
+   indexes matching `bitstamp*`
+1. The field holding the time component of the timeseries is `timestamp`
+1. We want to plot the average of the `last` field (this is the last exchange
+   rate)
+1. `fit(carry)` : if there is no data available when required for a
+   computation, then we'll just use the last one available
+1. `movingaverage(window=10)` : finally we'll plot the moving average over the
+   last 10 values
+
+The plotting of the volume is very similar.
+
+This will result in the following graph :
+
+![Final result]({{site.url}}/images/elk-tuning-nifi-btc-09-timelion.png)
