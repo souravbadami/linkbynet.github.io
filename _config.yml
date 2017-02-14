@@ -6,7 +6,7 @@ kramdown:
 
 gems:
     - jekyll-sitemap
-    - jekull-feed
+    - jekyll-feed
 
 exclude:
     - Gemfile
@@ -14,5 +14,3 @@ exclude:
     - LICENSE
     - README.md
     - CNAME
-
-theme: jekyll-theme-merlot
