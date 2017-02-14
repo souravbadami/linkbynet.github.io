@@ -1,0 +1,15 @@
+# Setup
+name: LinkByNet
+tagline: Engineering blog
+baseurl: ""
+
+# Gems
+gems:
+  - jekyll-paginate
+
+#Others
+markdown: kramdown
+
+kramdown:
+    parse_block_html: true
+    toc_levels: "1,2,3"
