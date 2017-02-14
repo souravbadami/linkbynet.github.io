@@ -1,11 +1,8 @@
 # A sample Gemfile
 source "https://rubygems.org"
-gemspec
 
-gem 'jekyll'
-gem 'jekyll-paginate'
-gem 'kramdown'
-gem 'pygments.rb'
-gem 'json'
+require 'json'
+require 'open-uri'
+versions = JSON.parse(open('https://pages.github.com/versions.json').read)
 
-gem 'github-pages', group: :jekyll_plugins
+gem 'github-pages', versions['github-pages']
