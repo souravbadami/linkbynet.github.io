@@ -19,8 +19,8 @@ The settings of the indexes are critical to Elasticsearch performance.
 ##### Protip!
 
 When it comes to shards and replicas, it's a bit of a [Goldilocks
-principle](https://en.wikipedia.org/wiki/Goldilocks_principle) in action : Not
-too many, not to few, just enough.
+principle](https://en.wikipedia.org/wiki/Goldilocks_principle) in action : You
+should have not too many, not to few, just enough.
 
 Choose the numbers of shards and replicas of the indexes wisely because you
 cannot change them afterwards (you will need to reindex the data).

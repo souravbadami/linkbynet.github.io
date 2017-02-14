@@ -40,10 +40,9 @@ this later.
 ##### Protip!
 
 When growing the cluster, prefer horizontal scaling (adding more nodes) to
-vertical scaling (bigger nodes). This will share the load and allow for better
+vertical scaling (bigger nodes). This will share the load but also allow for better
 fault tolerance at the same time.
 </div>
-
 
 ## Elasticsearch settings
 
