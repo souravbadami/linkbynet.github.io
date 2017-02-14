@@ -14,6 +14,8 @@ categories: Elasticsearch tuning
 
 {% include elk-nifi.markdown %}
 
+{% include elk-timelion.markdown %}
+
 # References
 
 ## Software stack

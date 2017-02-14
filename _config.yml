@@ -3,6 +3,7 @@ description : LinkByNet's engineering blog
 
 kramdown:
     input: GFM
+    toc_levels : 1..4
 
 gems:
     - jekyll-sitemap
