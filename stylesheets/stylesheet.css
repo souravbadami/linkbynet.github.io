@@ -872,7 +872,7 @@ table > thead > tr > th {
 }
 
 
-#companyblob div {
+.companyblob div {
 	border-radius: 25px;
 	background: #E74310;
 	padding: 20px;
