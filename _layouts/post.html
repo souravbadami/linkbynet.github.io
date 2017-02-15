@@ -7,7 +7,11 @@ author: skattoor
 <p class="meta">By {{ author.display_name}}, {{ page.date | date_to_string }}</p>
 {{ content }}
 
-<div class="companyblob">
+<div class="company-description">
+	<div class="company-logo">
 	<img src="{{site.url}}/images/{{ site.linkbynet_logo }}"/>
+	</div>
+	<div class="company-blob">
 	{{ site.linkbynet_blob }}
+	</div>
 </div>
