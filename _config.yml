@@ -22,8 +22,9 @@ authors:
         twitter: StephaneLBN
         gravatar_id: 819bb0fd44e74b7ba819ccc2a9c7020b
 
+linkbynet_logo: LBN_Gris_Horizontal2.png
+
 linkbynet_blob: >
-    <img src="{{site.url}}/images/LBN_Gris_Horizontal2.png"/>
     <p> <a href="http://www.linkbynet.com">LINKBYNET</a> is an IT watchmaker that
     can assist you with talent in your digital transformation. We build
     best-of-breed architectures and orchestrate your applications with
