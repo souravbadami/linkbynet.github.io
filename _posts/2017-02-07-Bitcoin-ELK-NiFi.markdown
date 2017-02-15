@@ -18,6 +18,8 @@ categories: Elasticsearch tuning
 
 {% include elk-timelion.markdown %}
 
+{% include elk-conclusion.markdown %}
+
 # References
 
 ## Software stack
