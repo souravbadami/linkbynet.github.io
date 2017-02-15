@@ -2,6 +2,8 @@
 layout: post
 title:  "Elasticsearch tuning : a simple use case exploring ELK,  NiFi and Bitcoin"
 date:   2017-02-07 15:40:56
+author: skattoor
+
 categories: Elasticsearch tuning
 ---
 {::options parse_block_html="true" /}
