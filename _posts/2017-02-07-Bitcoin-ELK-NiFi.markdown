@@ -38,6 +38,7 @@ categories: Elasticsearch tuning
 * [Elasticsearch system configuration][es-system-tuning]
 
 ## NiFi reference material
+
 * [GetHTTP Processor][gethttp]
 * [JoltTransformJSON Processor][jolt]
 * [EvaluateJsonPath Processor][jsonpath]

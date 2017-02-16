@@ -37,7 +37,27 @@ when installed locally).
 
 ### Defining an SSL Context Service
 
-FIXME:
+We are going to connect to an HTTPs website in order to collect the Bitcoin
+trading information, and as such we need to setup a
+`StandardSSLContextService`. This will provide root certificates for example.
+
+You can do this in [NiFi][nifi] as showed in the following animation :
+
+![NiFi's SSL configuration]({{ site.url}}/images/elk-tuning-nifi-btc-10-ssl.gif)
+
+|-----------+---------------------|-----------------------------------------------|
+|Tab        | Property            | Value                                         |
+|:----------+:--------------------|:----------------------------------------------|
+|Settings   | Name                | StandardSSLContextService                     |
+|-----------+---------------------+-----------------------------------------------|
+|Properties | Truststore Filename | /opt/jre/lib/security/cacerts                 |
+|-----------+---------------------+-----------------------------------------------|
+|Properties | Truststore Password | changeit                                      |
+|-----------+---------------------+-----------------------------------------------|
+
+Those settings are those of the default Java Runtime Environment Truststore.
+You might have to adjust both the path and the password to match your
+installation.
 
 ### Positioning the necessary Processors
 
@@ -142,7 +162,6 @@ configuring it as show in the table below :
 |Properties |timestamp    | $.timestamp             |
 |-----------+-------------+-------------------------|
 
-
 ![EvalJSON]({{ site.url}}/images/elk-tuning-nifi-btc-04-setEvalJSON.gif)
 
 ### PutElasticsearch5 Processor
@@ -165,15 +184,29 @@ Here are the settings to configure :
 |-----------+------------------------+-----------------------------------------------------------|
 |Properties |Type                    | bitstampquotes                                            |
 |-----------+------------------------+-----------------------------------------------------------|
+|Properties |Batch Size              | 100                                                       |
+|-----------+------------------------+-----------------------------------------------------------|
 
 Worth noting : 
 
 * We set the Index to have a name containing the day of the data, so as to be
 able to drop entire indexes when purging old data
-* The type name has to match whatever you had configured in your index template
-
+* The `Type` name has to match whatever you had configured in your index
+  template so as to get mapped to the proper parameters
+* The `Batch Size` parameter is left to it's default value in this toy project
+  of ours, however it is one to test for and tune appropriately. It controls
+  how many documents [NiFi][nifi] will pool before sending a bulk indexing request
+  to [Elasticsearch][elasticsearch]
 
 ![PutES5]({{ site.url}}/images/elk-tuning-nifi-btc-05-setPutES5.gif)
+
+<div class="note protip no_toc">
+##### Protip!
+
+Use Elasticsearch's bulk API whenever possible : It will have Elasticsearch
+process multiple documents at once and improve significantly performance by
+reducing the query overhead per document.
+</div>
 
 
 ## Checking the flow behavior
