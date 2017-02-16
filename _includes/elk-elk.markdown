@@ -1,5 +1,14 @@
 # Configuring Elasticsearch
 
+## Installing Elasticsearch / Kibana
+
+You will find all needed instructions to setup your Elastic stack directly
+from [Elastic][https://www.elastic.co] :
+
+* [Elasticsearch installation procedure][elastic-install]
+* [Kibana installation procedure][kibana-install]
+
+
 ## System / hardware
 
 Elasticsearch is a resource hungry beast! You will need :

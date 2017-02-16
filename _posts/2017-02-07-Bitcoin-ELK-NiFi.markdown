@@ -33,6 +33,8 @@ categories: Elasticsearch tuning
 
 ## Elasticsearch reference material
 
+* [Elasticsearch installation procedure][elastic-install]
+* [Kibana installation procedure][kibana-install]
 * [Elasticsearch performance tuning][es-performance]
 * [Elasticsearch performance tuning for indexing speed][es-perf-tuning]
 * [Elasticsearch system configuration][es-system-tuning]
@@ -45,6 +47,9 @@ categories: Elasticsearch tuning
 * [PutElasticsearch5 Processor][es5]
 
 
+[elastic]: https://www.elastic.co/
+[elastic-install]: https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html
+[kibana-install]: https://www.elastic.co/guide/en/kibana/current/setup.html
 [bitstamp]: https://www.bitstamp.net
 [elasticsearch]: https://www.elastic.co/products/elasticsearch
 [nifi]: https://nifi.apache.org/
