@@ -1,14 +1,14 @@
 # Timelion
 
-[Timelion][timelion] is a [Kibana][kibana] plugin which let's you analyze
-timeseries.
+[Timelion][timelion] is a [Kibana][kibana] plugin which allows you to analyze
+time series.
 
-It let's you plot, compare different datasources on different timeframes (ex :
+It let you plot and compare different datasources on different timeframes (ex :
 website traffic this week compared to last week), compute statistical
 functions like derivatives and sliding window averages, and many other things.
 
-The following video does a better job at showing what you can expect from
-[Timelion][timelion] than I could, so I suggest you watch it to get a better
+The following video does a better job than I could at showing what you can expect from
+[Timelion][timelion], so I suggest watching it to get a better
 idea of what you can do :
 <iframe width="560" height="315" src="https://www.youtube.com/embed/L5LvP_Cj0A0" frameborder="0" allowfullscreen></iframe>
 
@@ -23,8 +23,8 @@ volume over time :
 Let's go through the first line :
 
 1. `.es()` : We use the datasource Elasticsearch (`.es`) and pull the data from the
-   indexes matching `bitstamp*`
-1. The field holding the time component of the timeseries is `timestamp`
+   indices matching `bitstamp*`
+1. The field holding the time component of the time series is `timestamp`
 1. We want to plot the average of the `last` field (this is the last exchange
    rate)
 1. `fit(carry)` : if there is no data available when required for a

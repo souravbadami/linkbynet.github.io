@@ -1,9 +1,9 @@
 # Setting up NiFi
 
-[NiFi][nifi] works by fetching data from its source into a so called
-"Flowfile" and then letting the flowfile go through Processors. Each processor
-will in turn extract or modify data from the flowfile and then pass it on to
-the next one.  This will go on until the flowfile has been through the entire
+[NiFi][nifi] works by fetching data from its source, converting it into a so called
+"Flowfile" and then letting the Flowfile go through Processors. Each processor
+will in turn extract or modify data from the Flowfile and then pass it on to
+the next one.  This will go on until the Flowfile has been through the entire
 workflow you defined.
 
 ## Installation
@@ -41,7 +41,7 @@ We are going to connect to an HTTPs website in order to collect the Bitcoin
 trading information, and as such we need to setup a
 `StandardSSLContextService`. This will provide root certificates for example.
 
-You can do this in [NiFi][nifi] as showed in the following animation :
+You can do this in [NiFi][nifi] as seen in the following animation :
 
 ![NiFi's SSL configuration]({{ site.url}}/images/elk-tuning-nifi-btc-10-ssl.gif)
 
@@ -55,7 +55,7 @@ You can do this in [NiFi][nifi] as showed in the following animation :
 |Properties | Truststore Password | changeit                                      |
 |-----------+---------------------+-----------------------------------------------|
 
-Those settings are those of the default Java Runtime Environment Truststore.
+These settings are those of the default Java Runtime Environment Truststore.
 You might have to adjust both the path and the password to match your
 installation.
 
@@ -74,7 +74,7 @@ The [GetHTTP][gethttp] Processor is used to download a single webpage. In our
 case, it will be used to fetch the Bitcoin trading information as a JSON
 formatted file from [Bitstamp][bitstamp] API.
 
-If you would query it in a web browser, this is what you would see :
+If you query it in a web browser, this is what you will see :
 ![GetHTTP]({{ site.url}}/images/elk-tuning-nifi-btc-07-bitstampjsonapi.png)
 
 We are basically going to have [NiFi][nifi] do the same through the
@@ -94,7 +94,7 @@ As you might expect, we need to configure a few settings :
 |Scheduling |Run schedule         | 60 sec                                        |
 |-----------+---------------------+-----------------------------------------------|
 
-Here's the demo illustrating how to configure this all :
+Here's the demo illustrating how to configure all this :
 
 ![GetHTTP]({{ site.url}}/images/elk-tuning-nifi-btc-02-set-GetHTTP.gif)
 
@@ -118,7 +118,7 @@ Here are the settings to configure :
 |Properties |Jolt Specification      | See below                                     |
 |-----------+------------------------+-----------------------------------------------|
 
-The Jolt specification is the JSON document where we basically describe that
+The Jolt specification is the JSON document where we basically say that
 we will map the `timestamp`, `volume` and `last` fields from the input into
 the same fields in the output. This will implicitly discard the other fields.
 
@@ -138,7 +138,7 @@ Here is what it looks like :
 <div class="note protip no_toc">
 ##### Protip!
 
-Elasticsearch indexes can grow really big really quickly. This means they will
+Elasticsearch indices can grow really big really quickly. This means they will
 require more resources to store (disk space) and process (CPU, RAM).
 
 **Always index as little as possible to satisfy your business needs.**
@@ -152,12 +152,12 @@ Flowfile attribute so that we can later use it to define the index we want to
 insert the data into.
 
 We're going to use the [EvaluateJsonPath Processor][jsonpath] to do this, by
-configuring it as show in the table below :
+configuring it as shown in the table below :
 
 |-----------+-------------+-------------------------|
 |Tab        | Property    | Value                   |
 |:----------+:------------+:------------------------|
-|Properties |Destination  | flowfile-attribute      |
+|Properties |Destination  | Flowfile-attribute      |
 |-----------+-------------+-------------------------|
 |Properties |timestamp    | $.timestamp             |
 |-----------+-------------+-------------------------|
@@ -190,11 +190,11 @@ Here are the settings to configure :
 Worth noting : 
 
 * We set the Index to have a name containing the day of the data, so as to be
-able to drop entire indexes when purging old data
+able to drop entire indices when purging old data
 * The `Type` name has to match whatever you had configured in your index
-  template so as to get mapped to the proper parameters
-* The `Batch Size` parameter is left to it's default value in this toy project
-  of ours, however it is one to test for and tune appropriately. It controls
+  template so as to be mapped to the proper parameters
+* The `Batch Size` parameter is left to its default value for the purpose of
+  our toy project, however it is one to test for and tune appropriately. It controls
   how many documents [NiFi][nifi] will pool before sending a bulk indexing request
   to [Elasticsearch][elasticsearch]
 

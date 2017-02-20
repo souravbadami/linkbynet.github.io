@@ -2,7 +2,7 @@
 
 ## Installing Elasticsearch / Kibana
 
-You will find all needed instructions to setup your Elastic stack directly
+You will find all the necessary instructions to setup your Elastic stack directly
 from [Elastic][elastic] :
 
 * [Elasticsearch installation procedure][elastic-install]
@@ -15,15 +15,15 @@ Elasticsearch is a resource hungry beast! You will need :
 
 * *(Very) Fast disks* : Preferably SSDs, preferably in RAID-0 for maximum I/O
 performance (or you can have multiple disks mounted on your system and let
-Elasticsearch decide where to write). This is assuming that you will have an
+Elasticsearch decide where to write). This is assuming that you have an
 Elasticsearch cluster with data redundancy.
 * *Lots of RAM* : Ample amounts of RAM will be required to run complex queries. It
 is however recommended to allocate half of the system memory to Elasticsearch,
 and leave the remaining half to the system for disk caching
-* *Enough CPU power* : Indexing and searching can mean going through a lot of data, and
-you will obviously get better response times with faster CPU. Although
-Elasticsearch is probably less greedy for CPU than it is for Disk speed or RAM
-quantity.
+* *Enough CPU power* : Although Elasticsearch is probably less greedy for CPU
+  than it is for Disk speed or RAM quantity, indexing and searching can mean
+  going through a lot of data, and you will obviously get better response
+  times with faster CPU. 
 
 Correctly sizing an Elasticsearch cluster is generally a difficult task and
 it requires experience to do it right.
@@ -49,13 +49,13 @@ this later.
 ##### Protip!
 
 When growing the cluster, prefer horizontal scaling (adding more nodes) to
-vertical scaling (bigger nodes). This will share the load but also allow for better
+vertical scaling (bigger nodes). This will not only share the load but also allow for better
 fault tolerance at the same time.
 </div>
 
 ## Elasticsearch settings
 
-A few Elasticsearch settings are critical for performance :
+A few Elasticsearch settings are critical for good performance :
 
 * The size of the JVM Heap, which should be half the size of the total amount
 of RAM (leaving the other half for OS level disk caching). This is set in the `java.options` file.
@@ -63,7 +63,7 @@ of RAM (leaving the other half for OS level disk caching). This is set in the `j
 system setting : for Linux you will find it in the `/etc/security/limits.conf`
 configuration file)
 * You also should make sure that Elasticsearch data will not be swapped out of
-RAM and into disk space to prevent unexpected and sporadic performance drops.
+RAM and into disk space to prevent unexpected and sporadic drops in performance.
 
 There are quite a few of them, for which Elastic.co provides [ample documentation][es-system-tuning].
 
@@ -82,21 +82,21 @@ queries. Therefore it is important to get rid of outdated or obsolete data as
 soon as possible.
 
 Deleting documents in an Elasticsearch index is an expensive operation,
-especially if there are lots of them. Opposite-wise, dropping an entire index
+especially if there are lots of them. On the other hand, dropping an entire index
 is cheap.
 
-Therefore, whenever possible, create time-based indexes. For example, each
+Therefore, whenever possible, create time-based indices. For example, each
 index will hold data for a specific day, week, month, year etc.
 When you want to get rid of old documents, you can easily drop entire
-indexes.
+indices.
 
 As an alternative to deleting indices, you can also close them. This will
-retain the data on disk, but will free most of the CPU/RAM resources and also
+retain the data on disk, but will free up most of the CPU/RAM resources and also
 leave you the option to re-open them if you need them later on.
 
 Finally, there is always data which is stored in indices you can't delete or
-close because you still use them regularly. Often the older indices are not
-modified anymore : This is typical of time based data, where you will add
+close because you still use them regularly. Often the older indices cease to
+be modified : This is typical of time-based data, where you will add
 documents to the index of the day and the older indices are basically
 read-only). Those indices can be optimized to reduce their resource requirements.
 
@@ -104,9 +104,9 @@ To summarize :
 
 * Delete indices when data is obsolete
 * Close indices where data might be infrequently accessed
-* Optimize indices which are not updated anymore
+* Optimize indices which are no longer updated
 
-There is a tool which will help you do this all in bulk : [`curator`][curator].
+There is a tool which will help you do all this in bulk : [`curator`][curator].
 
 As an example, here is how you would purge data older than 3 months in our
 case :
@@ -114,7 +114,7 @@ case :
 ### Setting the curator YAML configuration files
 
 First you need to create an `actions.yml` YAML configuration file to describe
-exactly based on which criteria you want data to be purged :
+exactly which criteria you want the data purge to be based on :
 
 {% highlight yaml %}
 ---
@@ -153,11 +153,11 @@ actions:
 <div class="note info">
 ##### Info
 
-This is directly inspired from the [example provided][curator-example] in the
+This is directly inspired by the [example provided][curator-example] in the
 [official documentation][curator].
 
 Refer to this if you want more information on other possible actions (such as
-closing indexes, or reorganizing them through a `forceMerge` action).
+closing indices, or reorganizing them through a `forceMerge` action).
 </div>
 
 You will also need to create a `config.yml` file which will tell `curator` how
@@ -167,7 +167,7 @@ to connect to the Elasticsearch cluster. This is best described in the
 
 ### Running the curator command
 
-Once those configuration files created, running `curator` is as simple as :
+Once those configuration files are created, running `curator` is as simple as :
 
 {% highlight bash %}
 
@@ -187,10 +187,10 @@ actions. Handy when debugging.
 
 This protip is twofold :
 
-* Create "temporal indexes" whenever possible to ease their time based
+* Create "temporal indices" whenever possible to ease their time-based
 management / tuning
-* Use `curator` to remove all obsolete data, close not-often-used indexes,
-optimize read-only indexes
+* Use `curator` to remove all obsolete data, close not-often-used indices,
+optimize read-only indices
 
 This will lead to a smaller data footprint, and an easier-on-resources
 Elasticsearch.
