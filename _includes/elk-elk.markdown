@@ -2,7 +2,7 @@
 
 ## Installing Elasticsearch / Kibana
 
-You will find all the necessary instructions to setup your Elastic stack directly
+You will find all the necessary instructions to setup your Elastic Stack directly
 from [Elastic][elastic] :
 
 * [Elasticsearch installation procedure][elastic-install]
@@ -65,7 +65,7 @@ configuration file)
 * You also should make sure that Elasticsearch data will not be swapped out of
 RAM and into disk space to prevent unexpected and sporadic drops in performance.
 
-There are quite a few of them, for which Elastic.co provides [ample documentation][es-system-tuning].
+There are quite a few of them, for which Elastic provides [ample documentation][es-system-tuning].
 
 <div class="note protip no_toc">
 ##### Protip!
