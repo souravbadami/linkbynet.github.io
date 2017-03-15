@@ -6,7 +6,7 @@ Logstash is an open source data collection engine with real-time pipelining capa
 
 Event Hubs is a highly scalable data streaming platform capable of ingesting millions of events per second. Data sent to an Event Hub can be transformed and stored using any real-time analytics provider or batching/storage adapters. With the ability to provide publish-subscribe capabilities with low latency and at massive scale, Event Hubs serves as the “on ramp” for Big Data. ([Source][eventhub])
 
-Although we didn’t find anything to ship data directly from Logstash to Azure Event Hub, we found that there is an existing plugin which gives output to an HTTP or HTTPS endpoint. So, we tried to use the [logstash-output-http][logstash-output-http] plugin to receive the events and then push the events to the Event Hub via Azure’s NodeJS API, as seen below :
+Although we didn’t find anything to ship data directly from Logstash to Azure Event Hub, we found that there is an existing plugin which gives output to an HTTP or HTTPS endpoint. So, we tried to use the [logstash-output-http][logstash-output-http] plugin to forward the events to a NodeJS tool and then use the Azure NodeJS API to push them to the Event Hub, as seen below :
 
 ![GetHTTP]({{ site.url}}/images/logstash-azure-nodejs-flow.png)
 

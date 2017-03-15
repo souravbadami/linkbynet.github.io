@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Logstash-AzureEventHub output plugin : Logstash output plugin to push data from logstash http output to azure event hub."
+title:  "Lemur : A tool to push data from Logstash to Azure Event Hub."
 date:   2017-02-27 14:17:00
 author: souravbadami
 
