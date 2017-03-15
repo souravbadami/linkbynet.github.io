@@ -1,17 +1,24 @@
 ## Introduction
 
-Logstash is an open source data collection engine with real-time pipelining capabilities. Logstash can dynamically unify data from disparate sources and normalize the data into destinations of your choice. Cleanse and democratize all your data for diverse advanced downstream analytics and visualization use cases. (Source)
+We needed to transfer logs and other data from Logstash to Microsoft Azure Event Hub. There are several available output plugins to ship the data from Logstash directly to several destinations like, csv, boundary, circonus, cloudwatch and many [more][output-plugins]. There’s no available plugin to ship data directly to Azure’s Event Hub.
 
-<iframe width="727" height="154" src="https://www.souravbadami.me/blog/wp-content/uploads/2017/02/Screenshot-from-2017-02-24-100912.png" frameborder="0" allowfullscreen></iframe>
+Logstash is an open source data collection engine with real-time pipelining capabilities. Logstash can dynamically unify data from disparate sources and normalize the data into destinations of your choice. Cleanse and democratize all your data for diverse advanced downstream analytics and visualization use cases. ([Source][logstash])
 
-## What is meant by an output plugin ?
+Event Hubs is a highly scalable data streaming platform capable of ingesting millions of events per second. Data sent to an Event Hub can be transformed and stored using any real-time analytics provider or batching/storage adapters. With the ability to provide publish-subscribe capabilities with low latency and at massive scale, Event Hubs serves as the “on ramp” for Big Data. ([Source][eventhub])
 
-We already know from the above introduction that Logstash could be used to collect data from different sources. These collections are done through some input sources with the help of an input plugin. So, for these data to move out to a required source from Logstash engine — We need an output plugin.
+Although we didn’t find anything to ship data directly from Logstash to Azure Event Hub, we found that there is an existing plugin which gives output to an HTTP or HTTPS endpoint. So, we tried to use the [logstash-output-http][logstash-output-http] plugin to receive the events and then push the events to the Event Hub via Azure’s NodeJS API, as seen below :
 
-## What is Logstash -> Azure Event Hub output plugin ?
+![GetHTTP]({{ site.url}}/images/logstash-azure-nodejs-flow.png)
 
-Logstash -> Azure Event Hub output plugin is a Logstash output plugin written using NodeJS.
+Now, you might think — why didn’t we  write a native plugin ? It would seem like the easiest thing to use with Logstash. Well, we didn’t find any available Ruby API for Azure and Logstash plugins are written using Ruby. We also know that Logstash is written using jRuby and there’s an available Java API for the Hub. So, we can use a jar injection in Ruby to design a native plugin.
 
-Working: The NodeJS script listens to a predefined port (it depends on the user) and accepts the data via an http response in json format. It then pushes the data to the azure event hub using the send method from the azure-event-hubs NodeJS api.
+
+You can find the source of our solution [here][source]. Just replace the Event Hub connection string and desired http output port in config.js and execute the script.
 
 We are working on the native plugin for logstash which could push the data directly to the azure event hub, but this might work as a temporary solution for now.
+
+[logstash]: https://www.elastic.co/guide/en/logstash/current/introduction.html
+[eventhub]: https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-what-is-event-hubs
+[output-plugins]: https://www.elastic.co/guide/en/logstash/current/output-plugins.html
+[logstash-output-http]: https://github.com/logstash-plugins/logstash-output-http
+[source]: https://github.com/linkbynet/OPS2.0/tree/master/lemur
